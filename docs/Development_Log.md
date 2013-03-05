@@ -84,7 +84,7 @@ Primary goals:
 
 - [x] Move to github
 - [x] Clean up source codes/refactor
-- [ ] Continue implementation on MyEasyVeep
+- [x] Continue implementation on MyEasyVeep
 
 A repository was created on github in order to replace the confusing,
 overly verbose SVN repository that was being used. Github was selected
@@ -118,3 +118,5 @@ would effect the Sensors and Actuators of the simulation, repsectively.
 With knowledge about the structure of the swfs, it should be possible to
 create new ones easily enough, but research into that is being put off until
 more progress is made on the main work products.
+
+Implementation of the MyEasyVeep Sensor Update routine has been roughly hashed out. A C# form timer is being used to check the status from the swf every 67ms (the swfs were found to update at a rate of 15fps thus $\frac{1}{15} = 0.6666 $). Status is promising but one swf does not take kindly to the constant polling. Further research is necessary as to why the 7-seg simulation is so picky.
