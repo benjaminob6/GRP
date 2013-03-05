@@ -14,13 +14,13 @@ Sources
 The project sources can be found in the srcs directory. Each sub-project will have it's own directory wherein the source code related to that project and any project files are stored. SVN like folders such as trunk, branch, and tag have been removed in favor of git constructs that do not complicate the repo in the way svn does. Tagging is also much cleaner in git.
 
 Currently the srcs folder has the following projects:
-> MyEasyVeep
+> + MyEasyVeep
 
 Documents
 ------------------------------------
 Documents will be stored in the docs folder.
 Currently the docs folder has:
-> hw ( Hardware Information )
-> Development\_Log (notes taken while developing software)
+> + hw ( Hardware Information )
+> + Development\_Log (notes taken while developing software)
 
 
