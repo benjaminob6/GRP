@@ -113,7 +113,7 @@ are no models requiring analog interfaces. Therefore, all models should
 be able to interface with a Stellaris chip if the choice is made to go
 in that direction. Details of inputs and outputs for each model have been
 included in flasm.md. It was found that directly modifying DS[0-16] or DA[0-16]
-would effect the Sensors and Actuators of the simulation, repsectively.
+would effect the Sensors and Actuators of the simulation, respectively.
 
 With knowledge about the structure of the swfs, it should be possible to
 create new ones easily enough, but research into that is being put off until
@@ -129,11 +129,11 @@ Primary Goals:
 - [x] Get all simulations running nicely with custom EasyVeep (Except 7-seg)
 - [x] Do some more refactoring to improve maintainability
 - [x] Make it prettier
-- [ ] Hash out serail coms
+- [ ] Hash out serial coms
 - [ ] Add menu bar and option items to application
 
 Models for the DigitalSensor and DigitalActuators and other Process related
-classes were moved into a new subdirectory and proper constructor and accessor
+classes were moved into a new subdirectory and proper constructor and accessors
 methods were added so that depance on array indexes could almost be completely
 eliminated. Getting, Setting, and Toggeling values is now nicely encapsulated
 for both sensors and actuators.
@@ -144,9 +144,19 @@ making it impossible to actually interact with the swf via external means. Each 
 seemed to set auto a different times, so a brute force approach is currently being used
 to constantly set auto to 0 to allow the simulations to be useful.
 
+Another deficiency of the EasyVeep swfs was found. Apparently some do not properly initialize
+the values for the Sensors and Actuators, which leads to Exceptions being thrown if 
+the program attempts to read those values. To fix this, at least for Actuators, MyEasyVeep
+initializes all Actuator values to 0 as soon as possible so that later it can query the
+values when performing and insuring bit toggles go through. Still no hope on getting 7-Seg
+to cooperate.
+
 Ugly form buttons have been replaced with circular png graphics in the same vein as
 those found in EasyVeep visuals. Each one is associated with an input and output and
-are sort of encapsulated nicely so that redrawing occurs automagically.
+are sort of encapsulated nicely so that redrawing occurs auto magically.
+
+Redacting previous statement: Setting sensor values to 0 as soon as movie loads resolves
+all exception issues when attempting to read sensor values. 7-Seg is a go.
 
 
 

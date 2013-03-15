@@ -19,6 +19,7 @@ namespace MyEasyVeep.ProcessModels
         {
             this.SensorIndex = SensorIndex;
             this.SensorRole = SensorRole;
+            SetSensorValue("0");
         }
 
         //This may throw exceptions, be ready
