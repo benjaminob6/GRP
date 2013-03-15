@@ -49,8 +49,7 @@ namespace MyEasyVeep
                 int ClickedIndex = ActuatorIndicators.IndexOf(ClickedActuator);
                 try
                 {
-                    int NewActuatorValue = movieInfo.Actuators[ClickedIndex].ToggleActuator();
-                    ClickedActuator.Image = NewActuatorValue == 1 ? Resources.Actuator_On : Resources.Actuator_Off;
+                    movieInfo.Actuators[ClickedIndex].ToggleActuator();
                 }
                 catch
                 {
@@ -137,15 +136,7 @@ namespace MyEasyVeep
                 InOutData.Rows.Add(i, (Info.Sensors[i-1] != null ? Info.Sensors[i-1].SensorRole : "" ), ( Info.Actuators[i-1] != null ? Info.Actuators[i-1].ActuatorRole : ""));
 
                 SensorIndicators[i - 1].Image = Info.Sensors[i - 1] != null ? Resources.Sensor_Off : Resources.Indicator_Disabled;
-                if (Info.Actuators[i - 1] != null)
-                {
-                    ActuatorIndicators[i - 1].Image = Resources.Actuator_Off;
-                    ActuatorIndicators[i - 1].Enabled = true;
-
-                    //Sometimes EasyVeep SWFs don't initialize their actuators correctly
-                    Info.Actuators[i - 1].SetActuatorValue("0");
-                }
-                else
+                if (Info.Actuators[i - 1] == null)
                 {
                     ActuatorIndicators[i - 1].Image = Resources.Indicator_Disabled;
                     ActuatorIndicators[i - 1].Enabled = false;
@@ -154,7 +145,6 @@ namespace MyEasyVeep
 
             dataGridInOutVal.DataSource = InOutData;
             dataGridInOutVal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         private ProcessInfo GetProcessInfo()
@@ -162,12 +152,9 @@ namespace MyEasyVeep
 
             movieInfo = new ProcessInfo();
 
-            string ProcessDescription = "";
+            string ProcessDescription = "", SensorDescription = "", ActuatorDescription = "";
             int ProcessDescriptionIndex = 0; 
-            string SensorDescription = "";
-            int SensorDescriptionIndex = 1; 
-            string ActuatorDescription = "";
-            int ActuatorDescriptionIndex = 1;
+            int SensorDescriptionIndex = 1, ActuatorDescriptionIndex = 1;
 
             movieInfo.ProcessDescription = axShockwaveFlash1.GetVariable("EprgName");
 
@@ -182,12 +169,13 @@ namespace MyEasyVeep
 
             } while (ProcessDescription != "" && ProcessDescriptionIndex <= 10 );
             
+
             //Keep up the show for Actuators and Outputs
             do
             {
                 SensorDescription = axShockwaveFlash1.GetVariable(String.Format("EDigSens{0}", SensorDescriptionIndex));
                 if ( SensorDescription != "" )
-                    movieInfo.AddSensor(SensorDescription, SensorDescriptionIndex);
+                    movieInfo.AddSensor(SensorDescription, SensorDescriptionIndex,SensorIndicators[SensorDescriptionIndex-1]);
 
                 SensorDescriptionIndex++;
             } while (SensorDescription != "" && SensorDescriptionIndex <= 16);
@@ -196,7 +184,7 @@ namespace MyEasyVeep
             {
                 ActuatorDescription = axShockwaveFlash1.GetVariable(String.Format("EDigAct{0}", ActuatorDescriptionIndex));
                 if (ActuatorDescription != "" )
-                    movieInfo.AddActuator(ActuatorDescription, ActuatorDescriptionIndex);
+                    movieInfo.AddActuator(ActuatorDescription, ActuatorDescriptionIndex,ActuatorIndicators[ActuatorDescriptionIndex-1]);
 
                 ActuatorDescriptionIndex++;
             } while (ActuatorDescription != "" && ActuatorDescriptionIndex <= 16);
@@ -208,6 +196,8 @@ namespace MyEasyVeep
 
         private void inputUpdateTimer_Tick(object sender, EventArgs e)
         {
+            axShockwaveFlash1.SetVariable("auto", "0");
+
             //Get those sexy sensor values
             foreach (DigitalSensor ds in movieInfo.Sensors)
             {
@@ -216,11 +206,11 @@ namespace MyEasyVeep
 
                 try
                 {
-                    SensorIndicators[ds.SensorIndex - 1].Image = movieInfo.Sensors[ds.SensorIndex-1].GetSensorValue() == "1" ? Resources.Sensor_On : Resources.Sensor_Off;
+                    ds.UpdateSensorDisplay();
                 }
                 catch
                 {
-                    Console.WriteLine("Fuck up getting Sensor Value DS" + ds.SensorIndex);
+                    Console.WriteLine("Exception Thrown Getting Sensor Value" + ds.SensorIndex);
                 }
             }   
         }

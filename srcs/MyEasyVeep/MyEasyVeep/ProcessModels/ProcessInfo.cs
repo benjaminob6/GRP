@@ -21,15 +21,16 @@ namespace MyEasyVeep.ProcessModels
             ProcessDescription = "SET DESCRIPTION";
         }
 
-        public void AddSensor(string SensorRole, int SensorIndex)
+        public void AddSensor(string SensorRole, int SensorIndex, System.Windows.Forms.PictureBox Icon)
         {
             DigitalSensor NewSensor = new DigitalSensor(SensorRole, SensorIndex);
+            NewSensor.Icon = Icon;
             Sensors[SensorIndex - 1] = NewSensor;
         }
 
-        public void AddActuator(string ActuatorRole, int ActuatorIndex)
+        public void AddActuator(string ActuatorRole, int ActuatorIndex, System.Windows.Forms.PictureBox Icon)
         {
-            DigitalActuator NewActuator = new DigitalActuator(ActuatorRole, ActuatorIndex);
+            DigitalActuator NewActuator = new DigitalActuator(ActuatorRole, ActuatorIndex, Icon);
             Actuators[ActuatorIndex - 1] = NewActuator;
         }
     }

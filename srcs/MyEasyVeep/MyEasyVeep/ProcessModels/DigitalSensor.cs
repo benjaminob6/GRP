@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+
 
 namespace MyEasyVeep.ProcessModels
 {
@@ -10,6 +12,8 @@ namespace MyEasyVeep.ProcessModels
         public int SensorIndex { get; set; }
         public string SensorRole { get; set; }
         public static AxShockwaveFlashObjects.AxShockwaveFlash activeMovie { get; set; }
+
+        public PictureBox Icon {get; set;}
 
         public DigitalSensor(string SensorRole, int SensorIndex)
         {
@@ -21,6 +25,16 @@ namespace MyEasyVeep.ProcessModels
         public string GetSensorValue()
         {
             return activeMovie.GetVariable(String.Format("DS{0}", this.SensorIndex));
+        }
+
+        public string UpdateSensorDisplay()
+        {
+            string CurrentValue = GetSensorValue();
+
+            if (Icon != null)
+                Icon.Image = CurrentValue == "1" ? MyEasyVeep.Properties.Resources.Sensor_On : MyEasyVeep.Properties.Resources.Sensor_Off;
+
+            return CurrentValue;
         }
 
         public void SetSensorValue(string value)
