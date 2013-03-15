@@ -20,7 +20,6 @@ namespace MyEasyVeep
     {
         private List<PictureBox> SensorIndicators = new List<PictureBox>();
         private List<PictureBox> ActuatorIndicators = new List<PictureBox>();
-
         private ProcessInfo movieInfo = new ProcessInfo();
         
         public EasyVeepMain()
@@ -47,10 +46,11 @@ namespace MyEasyVeep
             PictureBox ClickedActuator = sender as PictureBox;
             if (ClickedActuator.Enabled)
             {
-                int ClickedIndex = ActuatorIndicators.IndexOf(ClickedActuator) + 1;
+                int ClickedIndex = ActuatorIndicators.IndexOf(ClickedActuator);
                 try
                 {
-                    ClickedActuator.Image = toggleActuator(ClickedIndex) == 1 ? Resources.Actuator_On : Resources.Actuator_Off;
+                    int NewActuatorValue = movieInfo.Actuators[ClickedIndex].ToggleActuator();
+                    ClickedActuator.Image = NewActuatorValue == 1 ? Resources.Actuator_On : Resources.Actuator_Off;
                 }
                 catch
                 {
@@ -59,25 +59,6 @@ namespace MyEasyVeep
             }
         }
 
-        private int toggleActuator(int index)
-        {
-            string CurrentActuator = String.Format("DA{0}",index);
-            string CurrentActuatorValue = "0";// axShockwaveFlash1.GetVariable(CurrentActuator);
-            int NewActuatorValue = 0;
-
-            if (CurrentActuatorValue == "0")
-            {
-                axShockwaveFlash1.SetVariable(CurrentActuator, "1");
-                NewActuatorValue = 1;
-            }
-            else
-            {
-                axShockwaveFlash1.SetVariable(CurrentActuator, "0");
-                NewActuatorValue = 0;
-            }
-
-            return NewActuatorValue;
-        }
 
 
         private void PopulateProcessBox()
@@ -132,12 +113,16 @@ namespace MyEasyVeep
 
             axShockwaveFlash1.LoadMovie(0,filePath);
             axShockwaveFlash1.Play();
+            DigitalActuator.activeMovie = DigitalSensor.activeMovie = axShockwaveFlash1;
+
             UpdateProcessInfoDisplay(GetProcessInfo());
 
+
             //Spool up the timer
-            //inputUpdateTimer.Enabled = true;
-            //inputUpdateTimer.Start();
+            inputUpdateTimer.Enabled = true;
+            inputUpdateTimer.Start();
         }
+
 
         private void UpdateProcessInfoDisplay(ProcessInfo Info){
             txtDesc.Text = Info.ProcessDescription;
@@ -156,6 +141,9 @@ namespace MyEasyVeep
                 {
                     ActuatorIndicators[i - 1].Image = Resources.Actuator_Off;
                     ActuatorIndicators[i - 1].Enabled = true;
+
+                    //Sometimes EasyVeep SWFs don't initialize their actuators correctly
+                    Info.Actuators[i - 1].SetActuatorValue("0");
                 }
                 else
                 {
@@ -199,7 +187,7 @@ namespace MyEasyVeep
             {
                 SensorDescription = axShockwaveFlash1.GetVariable(String.Format("EDigSens{0}", SensorDescriptionIndex));
                 if ( SensorDescription != "" )
-                    movieInfo.Sensors[SensorDescriptionIndex-1] = new DigitalSensor(SensorDescription, SensorDescriptionIndex);
+                    movieInfo.AddSensor(SensorDescription, SensorDescriptionIndex);
 
                 SensorDescriptionIndex++;
             } while (SensorDescription != "" && SensorDescriptionIndex <= 16);
@@ -208,7 +196,7 @@ namespace MyEasyVeep
             {
                 ActuatorDescription = axShockwaveFlash1.GetVariable(String.Format("EDigAct{0}", ActuatorDescriptionIndex));
                 if (ActuatorDescription != "" )
-                    movieInfo.Actuators[ActuatorDescriptionIndex-1] = new DigitalActuator(ActuatorDescription, ActuatorDescriptionIndex);
+                    movieInfo.AddActuator(ActuatorDescription, ActuatorDescriptionIndex);
 
                 ActuatorDescriptionIndex++;
             } while (ActuatorDescription != "" && ActuatorDescriptionIndex <= 16);
@@ -228,8 +216,7 @@ namespace MyEasyVeep
 
                 try
                 {
-                    var sensorValue = axShockwaveFlash1.GetVariable(String.Format("DS{0}", ds.SensorIndex));
-                    SensorIndicators[ds.SensorIndex - 1].Image = sensorValue == "1" ? Resources.Sensor_On : Resources.Sensor_Off;
+                    SensorIndicators[ds.SensorIndex - 1].Image = movieInfo.Sensors[ds.SensorIndex-1].GetSensorValue() == "1" ? Resources.Sensor_On : Resources.Sensor_Off;
                 }
                 catch
                 {

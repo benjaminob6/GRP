@@ -120,3 +120,7 @@ create new ones easily enough, but research into that is being put off until
 more progress is made on the main work products.
 
 Implementation of the MyEasyVeep Sensor Update routine has been roughly hashed out. A C# form timer is being used to check the status from the swf every 67ms (the swfs were found to update at a rate of 15fps thus $\frac{1}{15} = 0.6666 $). Status is promising but one swf does not take kindly to the constant polling. Further research is necessary as to why the 7-seg simulation is so picky.
+
+
+
+
