@@ -121,6 +121,34 @@ more progress is made on the main work products.
 
 Implementation of the MyEasyVeep Sensor Update routine has been roughly hashed out. A C# form timer is being used to check the status from the swf every 67ms (the swfs were found to update at a rate of 15fps thus $\frac{1}{15} = 0.6666 $). Status is promising but one swf does not take kindly to the constant polling. Further research is necessary as to why the 7-seg simulation is so picky.
 
+March 15, 2013
+-------------------------------------
+
+Primary Goals:
+
+- [x] Get all simulations running nicely with custom EasyVeep (Except 7-seg)
+- [x] Do some more refactoring to improve maintainability
+- [x] Make it prettier
+- [ ] Hash out serail coms
+- [ ] Add menu bar and option items to application
+
+Models for the DigitalSensor and DigitalActuators and other Process related
+classes were moved into a new subdirectory and proper constructor and accessor
+methods were added so that depance on array indexes could almost be completely
+eliminated. Getting, Setting, and Toggeling values is now nicely encapsulated
+for both sensors and actuators.
+
+The discovery of the "auto" variable in the swf files made many of the swfs usable
+after a SetVariable call was put in to turn auto to 0. May swfs would turn auto on
+making it impossible to actually interact with the swf via external means. Each swf
+seemed to set auto a different times, so a brute force approach is currently being used
+to constantly set auto to 0 to allow the simulations to be useful.
+
+Ugly form buttons have been replaced with circular png graphics in the same vein as
+those found in EasyVeep visuals. Each one is associated with an input and output and
+are sort of encapsulated nicely so that redrawing occurs automagically.
+
+
 
 
 
