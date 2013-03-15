@@ -11,10 +11,16 @@ using System.Timers;
 using System.Windows.Forms;
 using System.IO;
 
+using MyEasyVeep.ProcessModels;
+using MyEasyVeep.Properties;
+
 namespace MyEasyVeep
 {
     public partial class EasyVeepMain : Form
     {
+        private List<PictureBox> SensorIndicators = new List<PictureBox>();
+        private List<PictureBox> ActuatorIndicators = new List<PictureBox>();
+
         private ProcessInfo movieInfo = new ProcessInfo();
         
         public EasyVeepMain()
@@ -24,10 +30,53 @@ namespace MyEasyVeep
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            PopulateProcessBox();
+            for (int i = 1; i <= 16; i++)
+            {
+                PictureBox CurrentActuator = (this.Controls.Find("actuatorIndicator" + i, true).FirstOrDefault()) as PictureBox;
+                CurrentActuator.Click += new EventHandler(EasyVeepMain_Click);
+                ActuatorIndicators.Add(CurrentActuator);
 
-            groupIOSensors.Enabled = false;
+                SensorIndicators.Add((PictureBox)(this.Controls.Find("sensorIndicator" + i, true).FirstOrDefault()));
+            }
             
+            PopulateProcessBox();
+        }
+
+        void EasyVeepMain_Click(object sender, EventArgs e)
+        {
+            PictureBox ClickedActuator = sender as PictureBox;
+            if (ClickedActuator.Enabled)
+            {
+                int ClickedIndex = ActuatorIndicators.IndexOf(ClickedActuator) + 1;
+                try
+                {
+                    ClickedActuator.Image = toggleActuator(ClickedIndex) == 1 ? Resources.Actuator_On : Resources.Actuator_Off;
+                }
+                catch
+                {
+                    Console.WriteLine("Error Toggeling Actuator " + ClickedIndex);
+                }
+            }
+        }
+
+        private int toggleActuator(int index)
+        {
+            string CurrentActuator = String.Format("DA{0}",index);
+            string CurrentActuatorValue = "0";// axShockwaveFlash1.GetVariable(CurrentActuator);
+            int NewActuatorValue = 0;
+
+            if (CurrentActuatorValue == "0")
+            {
+                axShockwaveFlash1.SetVariable(CurrentActuator, "1");
+                NewActuatorValue = 1;
+            }
+            else
+            {
+                axShockwaveFlash1.SetVariable(CurrentActuator, "0");
+                NewActuatorValue = 0;
+            }
+
+            return NewActuatorValue;
         }
 
 
@@ -50,9 +99,9 @@ namespace MyEasyVeep
                     throw new Exception(String.Format("Unable to parse file number from swf file path {0}", swfFile));
             }
 
-	    //Linq has made me a bad programmer
+            //Linq has made me a bad programmer
             Processes = Processes.OrderBy(l=>l.Text).ToList();
-	    var selectionIndex = Processes.IndexOf(Processes.Where(m=>m.Value==1).FirstOrDefault());
+            var selectionIndex = Processes.IndexOf(Processes.Where(m=>m.Value==1).FirstOrDefault());
 
             comboBox1.Items.AddRange(Processes.ToArray());
 
@@ -75,7 +124,7 @@ namespace MyEasyVeep
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-	    //Stop any timers we have running
+            //Stop any timers we have running
             inputUpdateTimer.Stop();
 
             ProcessListItem CurrentItem = (ProcessListItem)comboBox1.SelectedItem;
@@ -85,9 +134,9 @@ namespace MyEasyVeep
             axShockwaveFlash1.Play();
             UpdateProcessInfoDisplay(GetProcessInfo());
 
-	    //Spool up the timer
-            inputUpdateTimer.Enabled = true;
-            inputUpdateTimer.Start();
+            //Spool up the timer
+            //inputUpdateTimer.Enabled = true;
+            //inputUpdateTimer.Start();
         }
 
         private void UpdateProcessInfoDisplay(ProcessInfo Info){
@@ -101,8 +150,18 @@ namespace MyEasyVeep
             for (int i = 1; i <= 16; i++)
             {
                 InOutData.Rows.Add(i, (Info.Sensors[i-1] != null ? Info.Sensors[i-1].SensorRole : "" ), ( Info.Actuators[i-1] != null ? Info.Actuators[i-1].ActuatorRole : ""));
-                ((Button)(groupIOActuators.Controls.Find(String.Format("btnDA{0}", i), true).FirstOrDefault())).Visible = Info.Actuators[i - 1] != null;
-                ((Button)(groupIOSensors.Controls.Find(String.Format("btnDS{0}", i), true).FirstOrDefault())).Visible = Info.Sensors[i - 1] != null;
+
+                SensorIndicators[i - 1].Image = Info.Sensors[i - 1] != null ? Resources.Sensor_Off : Resources.Indicator_Disabled;
+                if (Info.Actuators[i - 1] != null)
+                {
+                    ActuatorIndicators[i - 1].Image = Resources.Actuator_Off;
+                    ActuatorIndicators[i - 1].Enabled = true;
+                }
+                else
+                {
+                    ActuatorIndicators[i - 1].Image = Resources.Indicator_Disabled;
+                    ActuatorIndicators[i - 1].Enabled = false;
+                }
             }
 
             dataGridInOutVal.DataSource = InOutData;
@@ -158,76 +217,25 @@ namespace MyEasyVeep
             return movieInfo;
         }
 
+
         private void inputUpdateTimer_Tick(object sender, EventArgs e)
         {
-	    //Get those sexy sensor values
+            //Get those sexy sensor values
             foreach (DigitalSensor ds in movieInfo.Sensors)
             {
                 if (ds == null)
                     break;
 
-                var sensorValue = axShockwaveFlash1.GetVariable(String.Format("DS{0}", ds.SensorIndex));
-                Button buttonControl = groupIOSensors.Controls.Find(String.Format("btnDS{0}", ds.SensorIndex), true).FirstOrDefault() as Button;
-		if ( buttonControl != null )
-		    buttonControl.BackColor = ( sensorValue == "1" ? Color.Yellow : Control.DefaultBackColor );
-
+                try
+                {
+                    var sensorValue = axShockwaveFlash1.GetVariable(String.Format("DS{0}", ds.SensorIndex));
+                    SensorIndicators[ds.SensorIndex - 1].Image = sensorValue == "1" ? Resources.Sensor_On : Resources.Sensor_Off;
+                }
+                catch
+                {
+                    Console.WriteLine("Fuck up getting Sensor Value DS" + ds.SensorIndex);
+                }
             }   
         }
-
     }
-
-    public class ProcessInfo
-    {
-        public string ProcessDescription { get; set; }
-        public DigitalSensor[] Sensors { get; set; }
-        public DigitalActuator[] Actuators { get; set; }
-
-        public ProcessInfo()
-        {
-            Sensors = new DigitalSensor[16];
-            Actuators = new DigitalActuator[16];
-            ProcessDescription = "SET DESCRIPTION";
-        }
-    }
-
-    public class DigitalSensor
-    {
-        public int SensorIndex { get; set; }
-        public string SensorRole { get; set; }
-
-        public DigitalSensor(string SensorRole, int SensorIndex)
-        {
-            this.SensorIndex = SensorIndex;
-            this.SensorRole = SensorRole;
-        }                    
-    }
-
-    public class DigitalActuator
-    {
-        public int ActuatorIndex { get; set; }
-        public string ActuatorRole { get; set; }
-
-        public DigitalActuator(string ActuatorRole, int ActuatorIndex)
-        {
-            this.ActuatorIndex = ActuatorIndex;
-            this.ActuatorRole = ActuatorRole;
-        }                    
-    }
-
-    public class ProcessListItem {
-        public int Value { get; set; }
-        public string Text { get; set; }
-
-        public ProcessListItem(string Text, int Value)
-        {
-            this.Value = Value;
-            this.Text = Text;
-        }
-
-        public override string ToString()
-        {
-            return this.Text;
-        }
-    }
-
 }
