@@ -73,6 +73,15 @@
             this.actuatorIndicator2 = new System.Windows.Forms.PictureBox();
             this.actuatorIndicator1 = new System.Windows.Forms.PictureBox();
             this.inputUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.menuMainEasyVeep = new System.Windows.Forms.MenuStrip();
+            this.myEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sELECTDEVICEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.gdProcesses.SuspendLayout();
             this.gbModelInfo.SuspendLayout();
@@ -111,12 +120,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).BeginInit();
+            this.menuMainEasyVeep.SuspendLayout();
             this.SuspendLayout();
             // 
             // axShockwaveFlash1
             // 
             this.axShockwaveFlash1.Enabled = true;
-            this.axShockwaveFlash1.Location = new System.Drawing.Point(582, 17);
+            this.axShockwaveFlash1.Location = new System.Drawing.Point(582, 36);
             this.axShockwaveFlash1.Name = "axShockwaveFlash1";
             this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
             this.axShockwaveFlash1.Size = new System.Drawing.Size(329, 506);
@@ -126,7 +136,7 @@
             // 
             this.gdProcesses.Controls.Add(this.lblProcess);
             this.gdProcesses.Controls.Add(this.comboBox1);
-            this.gdProcesses.Location = new System.Drawing.Point(13, 13);
+            this.gdProcesses.Location = new System.Drawing.Point(13, 32);
             this.gdProcesses.Name = "gdProcesses";
             this.gdProcesses.Size = new System.Drawing.Size(472, 57);
             this.gdProcesses.TabIndex = 1;
@@ -156,7 +166,7 @@
             this.gbModelInfo.Controls.Add(this.dataGridInOutVal);
             this.gbModelInfo.Controls.Add(this.txtDesc);
             this.gbModelInfo.Controls.Add(this.lblProcessDesc);
-            this.gbModelInfo.Location = new System.Drawing.Point(13, 77);
+            this.gbModelInfo.Location = new System.Drawing.Point(13, 96);
             this.gbModelInfo.Name = "gbModelInfo";
             this.gbModelInfo.Size = new System.Drawing.Size(472, 451);
             this.gbModelInfo.TabIndex = 2;
@@ -211,7 +221,7 @@
             this.groupIOSensors.Controls.Add(this.sensorIndicator7);
             this.groupIOSensors.Controls.Add(this.sensorIndicator9);
             this.groupIOSensors.Controls.Add(this.sensorIndicator8);
-            this.groupIOSensors.Location = new System.Drawing.Point(492, 13);
+            this.groupIOSensors.Location = new System.Drawing.Point(492, 32);
             this.groupIOSensors.Name = "groupIOSensors";
             this.groupIOSensors.Size = new System.Drawing.Size(84, 326);
             this.groupIOSensors.TabIndex = 3;
@@ -396,7 +406,7 @@
             this.groupIOActuators.Controls.Add(this.actuatorIndicator3);
             this.groupIOActuators.Controls.Add(this.actuatorIndicator2);
             this.groupIOActuators.Controls.Add(this.actuatorIndicator1);
-            this.groupIOActuators.Location = new System.Drawing.Point(917, 12);
+            this.groupIOActuators.Location = new System.Drawing.Point(917, 31);
             this.groupIOActuators.Name = "groupIOActuators";
             this.groupIOActuators.Size = new System.Drawing.Size(81, 327);
             this.groupIOActuators.TabIndex = 32;
@@ -567,16 +577,88 @@
             // 
             this.inputUpdateTimer.Tick += new System.EventHandler(this.inputUpdateTimer_Tick);
             // 
+            // menuMainEasyVeep
+            // 
+            this.menuMainEasyVeep.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myEasyVeepToolStripMenuItem,
+            this.configurationToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuMainEasyVeep.Location = new System.Drawing.Point(0, 0);
+            this.menuMainEasyVeep.Name = "menuMainEasyVeep";
+            this.menuMainEasyVeep.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuMainEasyVeep.Size = new System.Drawing.Size(1005, 24);
+            this.menuMainEasyVeep.TabIndex = 33;
+            // 
+            // myEasyVeepToolStripMenuItem
+            // 
+            this.myEasyVeepToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.myEasyVeepToolStripMenuItem.Name = "myEasyVeepToolStripMenuItem";
+            this.myEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.myEasyVeepToolStripMenuItem.Text = "MyEasyVeep";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serialDeviceToolStripMenuItem,
+            this.enableAutoModeToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            // 
+            // serialDeviceToolStripMenuItem
+            // 
+            this.serialDeviceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sELECTDEVICEToolStripMenuItem});
+            this.serialDeviceToolStripMenuItem.Name = "serialDeviceToolStripMenuItem";
+            this.serialDeviceToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.serialDeviceToolStripMenuItem.Text = "Serial Device";
+            // 
+            // sELECTDEVICEToolStripMenuItem
+            // 
+            this.sELECTDEVICEToolStripMenuItem.Name = "sELECTDEVICEToolStripMenuItem";
+            this.sELECTDEVICEToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.sELECTDEVICEToolStripMenuItem.Text = "----SELECT DEVICE----";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMyEasyVeepToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // aboutMyEasyVeepToolStripMenuItem
+            // 
+            this.aboutMyEasyVeepToolStripMenuItem.Name = "aboutMyEasyVeepToolStripMenuItem";
+            this.aboutMyEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.aboutMyEasyVeepToolStripMenuItem.Text = "About MyEasyVeep";
+            // 
+            // enableAutoModeToolStripMenuItem
+            // 
+            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
+            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
+            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
+            // 
             // EasyVeepMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 535);
+            this.ClientSize = new System.Drawing.Size(1005, 558);
             this.Controls.Add(this.groupIOActuators);
             this.Controls.Add(this.axShockwaveFlash1);
             this.Controls.Add(this.groupIOSensors);
             this.Controls.Add(this.gbModelInfo);
             this.Controls.Add(this.gdProcesses);
+            this.Controls.Add(this.menuMainEasyVeep);
+            this.MainMenuStrip = this.menuMainEasyVeep;
             this.Name = "EasyVeepMain";
             this.Text = "MyEasyVeep";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -620,7 +702,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).EndInit();
+            this.menuMainEasyVeep.ResumeLayout(false);
+            this.menuMainEasyVeep.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -669,6 +754,15 @@
         private System.Windows.Forms.PictureBox actuatorIndicator3;
         private System.Windows.Forms.PictureBox actuatorIndicator2;
         private System.Windows.Forms.PictureBox actuatorIndicator1;
+        private System.Windows.Forms.MenuStrip menuMainEasyVeep;
+        private System.Windows.Forms.ToolStripMenuItem myEasyVeepToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serialDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sELECTDEVICEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutMyEasyVeepToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enableAutoModeToolStripMenuItem;
     }
 }
 

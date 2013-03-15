@@ -20,7 +20,7 @@ namespace MyEasyVeep
     {
         private List<PictureBox> SensorIndicators = new List<PictureBox>();
         private List<PictureBox> ActuatorIndicators = new List<PictureBox>();
-        private ProcessInfo movieInfo = new ProcessInfo();
+        private ProcessInfo movieInfo;
         
         public EasyVeepMain()
         {
@@ -149,46 +149,25 @@ namespace MyEasyVeep
 
         private ProcessInfo GetProcessInfo()
         {
+            movieInfo = new ProcessInfo(axShockwaveFlash1);
 
-            movieInfo = new ProcessInfo();
-
-            string ProcessDescription = "", SensorDescription = "", ActuatorDescription = "";
-            int ProcessDescriptionIndex = 0; 
-            int SensorDescriptionIndex = 1, ActuatorDescriptionIndex = 1;
-
-            movieInfo.ProcessDescription = axShockwaveFlash1.GetVariable("EprgName");
-
-
-            //We are going to iterate through the process description variables until we hit and empty one
-            do
+            //We should always have the same number of Actuator and Sensor Icons, so I unrolled
+            //the loop for the Sensors into the one for the actuators.
+            for (int i = 0; i < ActuatorIndicators.Count; i++)
             {
-                //I'm not much for Hungarian, but this means English Program Description
-                ProcessDescription = axShockwaveFlash1.GetVariable(String.Format("EprgLeiras{0}", ProcessDescriptionIndex > 0 ? ProcessDescriptionIndex.ToString() : ""));
-                movieInfo.ProcessDescription += " " + ProcessDescription;
-                ProcessDescriptionIndex++;
+                if (movieInfo.Actuators[i] != null)
+                {
+                    movieInfo.Actuators[i].Icon = ActuatorIndicators[i];
+                }
 
-            } while (ProcessDescription != "" && ProcessDescriptionIndex <= 10 );
-            
+                if (movieInfo.Sensors[i] != null)
+                {
+                    movieInfo.Sensors[i].Icon = SensorIndicators[i];
+                }
+            }
 
-            //Keep up the show for Actuators and Outputs
-            do
-            {
-                SensorDescription = axShockwaveFlash1.GetVariable(String.Format("EDigSens{0}", SensorDescriptionIndex));
-                if ( SensorDescription != "" )
-                    movieInfo.AddSensor(SensorDescription, SensorDescriptionIndex,SensorIndicators[SensorDescriptionIndex-1]);
-
-                SensorDescriptionIndex++;
-            } while (SensorDescription != "" && SensorDescriptionIndex <= 16);
-
-            do
-            {
-                ActuatorDescription = axShockwaveFlash1.GetVariable(String.Format("EDigAct{0}", ActuatorDescriptionIndex));
-                if (ActuatorDescription != "" )
-                    movieInfo.AddActuator(ActuatorDescription, ActuatorDescriptionIndex,ActuatorIndicators[ActuatorDescriptionIndex-1]);
-
-                ActuatorDescriptionIndex++;
-            } while (ActuatorDescription != "" && ActuatorDescriptionIndex <= 16);
-
+            enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
+            groupIOActuators.Enabled = true;
 
             return movieInfo;
         }
@@ -196,7 +175,20 @@ namespace MyEasyVeep
 
         private void inputUpdateTimer_Tick(object sender, EventArgs e)
         {
-            axShockwaveFlash1.SetVariable("auto", "0");
+            if (movieInfo.AutoMode)
+            {
+                axShockwaveFlash1.SetVariable("auto", "1");
+
+                foreach (DigitalActuator da in movieInfo.Actuators)
+                {
+                    if ( da != null )
+                        da.SyncActuatorValue();
+                }
+            }
+            else
+            {
+                axShockwaveFlash1.SetVariable("auto", "0");
+            }
 
             //Get those sexy sensor values
             foreach (DigitalSensor ds in movieInfo.Sensors)
@@ -213,6 +205,21 @@ namespace MyEasyVeep
                     Console.WriteLine("Exception Thrown Getting Sensor Value" + ds.SensorIndex);
                 }
             }   
+        }
+
+        private void enableAutoModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            movieInfo.ToggleAutoMode();
+            if (movieInfo.AutoMode)
+            {
+                enableAutoModeToolStripMenuItem.Text = "Disable Auto Mode";
+                groupIOActuators.Enabled = false;
+            }
+            else
+            {
+                enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
+                groupIOActuators.Enabled = true;
+            }
         }
     }
 }

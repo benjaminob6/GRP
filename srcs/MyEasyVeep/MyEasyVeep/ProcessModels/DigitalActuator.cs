@@ -11,17 +11,19 @@ namespace MyEasyVeep.ProcessModels
         public int ActuatorIndex { get; set; }
         public string ActuatorRole { get; set; }
         public static AxShockwaveFlashObjects.AxShockwaveFlash activeMovie { get; set; }
-        public PictureBox Icon;
+        public PictureBox Icon {get; set;}
 
-        public DigitalActuator(string ActuatorRole, int ActuatorIndex, PictureBox Icon)
+        public DigitalActuator(string ActuatorRole, int ActuatorIndex)
         {
             this.ActuatorIndex = ActuatorIndex;
             this.ActuatorRole = ActuatorRole;
-            this.Icon = Icon;
 
             //Initialize all Actuator Values to Zero to begin. This fixes stuff
             SetActuatorValue("0");
+        }                    
 
+        public DigitalActuator(string ActuatorRole, int ActuatorIndex, PictureBox Icon) : this(ActuatorRole,ActuatorIndex)
+        {
             if (Icon != null)
             {
                 Icon.Enabled = true;
@@ -29,10 +31,17 @@ namespace MyEasyVeep.ProcessModels
             }
         }                    
 
+
         //This may throw exceptions, be ready
         public string GetActuatorValue()
         {
             return activeMovie.GetVariable(String.Format("DA{0}", this.ActuatorIndex));
+        }
+
+        public void SyncActuatorValue()
+        {
+            if (Icon != null)
+                Icon.Image = GetActuatorValue() == "1" ? MyEasyVeep.Properties.Resources.Actuator_On : MyEasyVeep.Properties.Resources.Actuator_Off;
         }
 
         public void SetActuatorValue(string value)
