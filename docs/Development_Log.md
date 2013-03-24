@@ -130,7 +130,7 @@ Primary Goals:
 - [x] Do some more refactoring to improve maintainability
 - [x] Make it prettier
 - [ ] Hash out serial coms
-- [ ] Add menu bar and option items to application
+- [x] Add menu bar and option items to application
 
 Models for the DigitalSensor and DigitalActuators and other Process related
 classes were moved into a new subdirectory and proper constructor and accessors
@@ -157,6 +157,23 @@ are sort of encapsulated nicely so that redrawing occurs auto magically.
 
 Redacting previous statement: Setting sensor values to 0 as soon as movie loads resolves
 all exception issues when attempting to read sensor values. 7-Seg is a go.
+
+A menu bar has been added that allows the user to toggle Auto mode on and off
+if they wish to view how the simulation is supposed to operate. Additionally,
+an area has been set up in the menu bar to allow selection and configuation 
+of a serial device. It is planned to make this operate similar to the Arduino
+enviornment for selecting serial devices.
+
+March 22, 2013
+----------------------------------
+
+Primary Goals:
+
+- [ ] Evaluate Si Isolator Circuits
+- [ ] Formalize report layout
+- [ ] Continue work on Serial Comms
+
+
 
 
 
