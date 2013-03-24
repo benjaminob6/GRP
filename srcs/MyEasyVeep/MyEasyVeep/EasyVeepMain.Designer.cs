@@ -79,9 +79,9 @@
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sELECTDEVICEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.gdProcesses.SuspendLayout();
             this.gbModelInfo.SuspendLayout();
@@ -230,6 +230,7 @@
             // 
             // sensorIndicator16
             // 
+            this.sensorIndicator16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.BackgroundImage")));
             this.sensorIndicator16.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.Image")));
             this.sensorIndicator16.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.InitialImage")));
             this.sensorIndicator16.Location = new System.Drawing.Point(44, 283);
@@ -240,6 +241,7 @@
             // 
             // sensorIndicator4
             // 
+            this.sensorIndicator4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.BackgroundImage")));
             this.sensorIndicator4.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.Image")));
             this.sensorIndicator4.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.InitialImage")));
             this.sensorIndicator4.Location = new System.Drawing.Point(6, 129);
@@ -250,6 +252,7 @@
             // 
             // sensorIndicator15
             // 
+            this.sensorIndicator15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.BackgroundImage")));
             this.sensorIndicator15.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.Image")));
             this.sensorIndicator15.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.InitialImage")));
             this.sensorIndicator15.Location = new System.Drawing.Point(44, 245);
@@ -260,6 +263,7 @@
             // 
             // sensorIndicator1
             // 
+            this.sensorIndicator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.BackgroundImage")));
             this.sensorIndicator1.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.Image")));
             this.sensorIndicator1.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.InitialImage")));
             this.sensorIndicator1.Location = new System.Drawing.Point(6, 15);
@@ -270,6 +274,7 @@
             // 
             // sensorIndicator14
             // 
+            this.sensorIndicator14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.BackgroundImage")));
             this.sensorIndicator14.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.Image")));
             this.sensorIndicator14.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.InitialImage")));
             this.sensorIndicator14.Location = new System.Drawing.Point(44, 205);
@@ -280,6 +285,7 @@
             // 
             // sensorIndicator2
             // 
+            this.sensorIndicator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.BackgroundImage")));
             this.sensorIndicator2.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.Image")));
             this.sensorIndicator2.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.InitialImage")));
             this.sensorIndicator2.Location = new System.Drawing.Point(6, 53);
@@ -290,6 +296,7 @@
             // 
             // sensorIndicator13
             // 
+            this.sensorIndicator13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.BackgroundImage")));
             this.sensorIndicator13.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.Image")));
             this.sensorIndicator13.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.InitialImage")));
             this.sensorIndicator13.Location = new System.Drawing.Point(44, 167);
@@ -300,6 +307,7 @@
             // 
             // sensorIndicator3
             // 
+            this.sensorIndicator3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.BackgroundImage")));
             this.sensorIndicator3.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.Image")));
             this.sensorIndicator3.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.InitialImage")));
             this.sensorIndicator3.Location = new System.Drawing.Point(6, 91);
@@ -310,6 +318,7 @@
             // 
             // sensorIndicator12
             // 
+            this.sensorIndicator12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.BackgroundImage")));
             this.sensorIndicator12.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.Image")));
             this.sensorIndicator12.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.InitialImage")));
             this.sensorIndicator12.Location = new System.Drawing.Point(44, 129);
@@ -320,6 +329,7 @@
             // 
             // sensorIndicator5
             // 
+            this.sensorIndicator5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.BackgroundImage")));
             this.sensorIndicator5.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.Image")));
             this.sensorIndicator5.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.InitialImage")));
             this.sensorIndicator5.Location = new System.Drawing.Point(6, 167);
@@ -330,6 +340,7 @@
             // 
             // sensorIndicator11
             // 
+            this.sensorIndicator11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.BackgroundImage")));
             this.sensorIndicator11.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.Image")));
             this.sensorIndicator11.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.InitialImage")));
             this.sensorIndicator11.Location = new System.Drawing.Point(44, 91);
@@ -340,6 +351,7 @@
             // 
             // sensorIndicator6
             // 
+            this.sensorIndicator6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.BackgroundImage")));
             this.sensorIndicator6.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.Image")));
             this.sensorIndicator6.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.InitialImage")));
             this.sensorIndicator6.Location = new System.Drawing.Point(6, 205);
@@ -350,6 +362,7 @@
             // 
             // sensorIndicator10
             // 
+            this.sensorIndicator10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.BackgroundImage")));
             this.sensorIndicator10.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.Image")));
             this.sensorIndicator10.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.InitialImage")));
             this.sensorIndicator10.Location = new System.Drawing.Point(44, 53);
@@ -360,6 +373,7 @@
             // 
             // sensorIndicator7
             // 
+            this.sensorIndicator7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.BackgroundImage")));
             this.sensorIndicator7.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.Image")));
             this.sensorIndicator7.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.InitialImage")));
             this.sensorIndicator7.Location = new System.Drawing.Point(6, 245);
@@ -370,6 +384,7 @@
             // 
             // sensorIndicator9
             // 
+            this.sensorIndicator9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.BackgroundImage")));
             this.sensorIndicator9.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.Image")));
             this.sensorIndicator9.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.InitialImage")));
             this.sensorIndicator9.Location = new System.Drawing.Point(44, 15);
@@ -380,6 +395,7 @@
             // 
             // sensorIndicator8
             // 
+            this.sensorIndicator8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.BackgroundImage")));
             this.sensorIndicator8.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.Image")));
             this.sensorIndicator8.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.InitialImage")));
             this.sensorIndicator8.Location = new System.Drawing.Point(6, 283);
@@ -415,6 +431,7 @@
             // 
             // actuatorIndicator16
             // 
+            this.actuatorIndicator16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.BackgroundImage")));
             this.actuatorIndicator16.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.Image")));
             this.actuatorIndicator16.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.InitialImage")));
             this.actuatorIndicator16.Location = new System.Drawing.Point(44, 282);
@@ -425,6 +442,7 @@
             // 
             // actuatorIndicator15
             // 
+            this.actuatorIndicator15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.BackgroundImage")));
             this.actuatorIndicator15.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.Image")));
             this.actuatorIndicator15.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.InitialImage")));
             this.actuatorIndicator15.Location = new System.Drawing.Point(44, 244);
@@ -435,6 +453,7 @@
             // 
             // actuatorIndicator14
             // 
+            this.actuatorIndicator14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.BackgroundImage")));
             this.actuatorIndicator14.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.Image")));
             this.actuatorIndicator14.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.InitialImage")));
             this.actuatorIndicator14.Location = new System.Drawing.Point(44, 206);
@@ -445,6 +464,7 @@
             // 
             // actuatorIndicator13
             // 
+            this.actuatorIndicator13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.BackgroundImage")));
             this.actuatorIndicator13.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.Image")));
             this.actuatorIndicator13.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.InitialImage")));
             this.actuatorIndicator13.Location = new System.Drawing.Point(44, 168);
@@ -455,6 +475,7 @@
             // 
             // actuatorIndicator12
             // 
+            this.actuatorIndicator12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.BackgroundImage")));
             this.actuatorIndicator12.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.Image")));
             this.actuatorIndicator12.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.InitialImage")));
             this.actuatorIndicator12.Location = new System.Drawing.Point(44, 130);
@@ -465,6 +486,7 @@
             // 
             // actuatorIndicator11
             // 
+            this.actuatorIndicator11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.BackgroundImage")));
             this.actuatorIndicator11.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.Image")));
             this.actuatorIndicator11.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.InitialImage")));
             this.actuatorIndicator11.Location = new System.Drawing.Point(44, 92);
@@ -475,6 +497,7 @@
             // 
             // actuatorIndicator10
             // 
+            this.actuatorIndicator10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.BackgroundImage")));
             this.actuatorIndicator10.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.Image")));
             this.actuatorIndicator10.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.InitialImage")));
             this.actuatorIndicator10.Location = new System.Drawing.Point(44, 54);
@@ -485,6 +508,7 @@
             // 
             // actuatorIndicator9
             // 
+            this.actuatorIndicator9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.BackgroundImage")));
             this.actuatorIndicator9.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.Image")));
             this.actuatorIndicator9.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.InitialImage")));
             this.actuatorIndicator9.Location = new System.Drawing.Point(44, 16);
@@ -495,6 +519,7 @@
             // 
             // actuatorIndicator8
             // 
+            this.actuatorIndicator8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.BackgroundImage")));
             this.actuatorIndicator8.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.Image")));
             this.actuatorIndicator8.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.InitialImage")));
             this.actuatorIndicator8.Location = new System.Drawing.Point(6, 282);
@@ -505,6 +530,7 @@
             // 
             // actuatorIndicator7
             // 
+            this.actuatorIndicator7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.BackgroundImage")));
             this.actuatorIndicator7.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.Image")));
             this.actuatorIndicator7.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.InitialImage")));
             this.actuatorIndicator7.Location = new System.Drawing.Point(6, 244);
@@ -515,6 +541,7 @@
             // 
             // actuatorIndicator6
             // 
+            this.actuatorIndicator6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.BackgroundImage")));
             this.actuatorIndicator6.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.Image")));
             this.actuatorIndicator6.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.InitialImage")));
             this.actuatorIndicator6.Location = new System.Drawing.Point(6, 206);
@@ -525,6 +552,7 @@
             // 
             // actuatorIndicator5
             // 
+            this.actuatorIndicator5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.BackgroundImage")));
             this.actuatorIndicator5.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.Image")));
             this.actuatorIndicator5.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.InitialImage")));
             this.actuatorIndicator5.Location = new System.Drawing.Point(6, 168);
@@ -535,6 +563,7 @@
             // 
             // actuatorIndicator4
             // 
+            this.actuatorIndicator4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.BackgroundImage")));
             this.actuatorIndicator4.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.Image")));
             this.actuatorIndicator4.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.InitialImage")));
             this.actuatorIndicator4.Location = new System.Drawing.Point(6, 130);
@@ -545,6 +574,7 @@
             // 
             // actuatorIndicator3
             // 
+            this.actuatorIndicator3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.BackgroundImage")));
             this.actuatorIndicator3.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.Image")));
             this.actuatorIndicator3.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.InitialImage")));
             this.actuatorIndicator3.Location = new System.Drawing.Point(6, 92);
@@ -555,6 +585,7 @@
             // 
             // actuatorIndicator2
             // 
+            this.actuatorIndicator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.BackgroundImage")));
             this.actuatorIndicator2.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.Image")));
             this.actuatorIndicator2.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.InitialImage")));
             this.actuatorIndicator2.Location = new System.Drawing.Point(6, 54);
@@ -565,6 +596,7 @@
             // 
             // actuatorIndicator1
             // 
+            this.actuatorIndicator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.BackgroundImage")));
             this.actuatorIndicator1.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.Image")));
             this.actuatorIndicator1.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.InitialImage")));
             this.actuatorIndicator1.Location = new System.Drawing.Point(6, 16);
@@ -600,7 +632,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             // 
             // configurationToolStripMenuItem
@@ -626,6 +658,13 @@
             this.sELECTDEVICEToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.sELECTDEVICEToolStripMenuItem.Text = "----SELECT DEVICE----";
             // 
+            // enableAutoModeToolStripMenuItem
+            // 
+            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
+            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
+            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -639,13 +678,6 @@
             this.aboutMyEasyVeepToolStripMenuItem.Name = "aboutMyEasyVeepToolStripMenuItem";
             this.aboutMyEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutMyEasyVeepToolStripMenuItem.Text = "About MyEasyVeep";
-            // 
-            // enableAutoModeToolStripMenuItem
-            // 
-            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
-            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
-            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
             // 
             // EasyVeepMain
             // 
