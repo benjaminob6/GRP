@@ -169,13 +169,24 @@ March 22, 2013
 
 Primary Goals:
 
-- [ ] Evaluate Si Isolator Circuits
-- [ ] Formalize report layout
+- [x] Evaluate Si Isolator Circuits
+- [x] Formalize report layout
 - [ ] Continue work on Serial Comms
 
+Dispite terrible solder joints, the Si isolator IC's appear to be working fine. The formal report layout was made and uploaded to Blackboard for review. Serial comms are still lagging due to indecision.
 
 
+March 24, 2013
+----------------------------------
 
+Primary Goals:
+
+- [X] Get the Valueline discovery board working
+- [ ] Serial Coms?
+
+[This document](http://www.cs.indiana.edu/~geobrown/book.pdf) was used to set up a good dev enviornment for the STM32VLDISCOVERY. All other documented toolchains were rather limited or expensive, so a GNU/Linux based solution was used. The steps detailed in the text were used to set up a valid enviornment and an example project was cloned to easy the startup. The necessary paths were updated to match the system on which development was occurring.
+
+This introduced the use of gdb and stlink-hexane to perform various debugging and uploading tasks. Results so far are in line with what is presented in the document.
 
 
 
