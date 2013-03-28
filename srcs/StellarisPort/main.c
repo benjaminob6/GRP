@@ -186,12 +186,12 @@ void initPeripherals(){
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
     GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
 
-    /*
+
     // PinMux spit this out for me. I'll just trust it for now
     // First open the lock and select the bits we want to modify in the GPIO commit register.
     HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
     HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x80;
-    */
+
     GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
     GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7, 0);
 

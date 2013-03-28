@@ -3,3 +3,6 @@ obj/
 *.user
 *.swp
 *.suo
+*.obj
+*.out
+*.pp
