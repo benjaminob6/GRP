@@ -15,25 +15,40 @@
 //
 // Defines and Macros
 //////////////////////////////////////////
+#define SYS_MILLIS 13333 //3 Cycles Per Loop. @40Mhz that's ~13,333 per ms!
 
+//
+// Global Variables
+/////////////////////////////////////////
 
 //
 // Functions
 /////////////////////////////////////////
 void initPeripherals();
 
+void UARTSend(char* cBuffer, unsigned long ulCount){
+	while(ulCount--){
+		UARTCharPutNonBlocking(UART0_BASE, *cBuffer++);
+	}
+}
 
+
+void __error__(char *pcFilename, unsigned long ulLine)
+{
+	while(1){}
+}
 
 
 //
 // Main program loop
 ////////////////////////////////////////
-void main(void) {
+void main(void){
 
 	initPeripherals();
 
 	while(1){
-
+		UARTSend("Hello WORLD!\r\n",14);
+		SysCtlDelay(500*SYS_MILLIS);
 	}
 }
 
@@ -58,26 +73,46 @@ void initPeripherals(){
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 
 	//
+	// Inputs are on the Left side of the Stellaris Board
+	// Outputs are on the Right side. They are grouped as follows
+	//
+	// INPUTS (Actuators)
+	// 7-0: PB0 PB1 PE4 PE5 PB4 PA5 PA6 PA7
+	// 15-8: PB5 PD0 PD1 PD2 PD3 PE1 PE2 PE3
+	//
+	//
+	// Outputs (Sensors)
+	// 7-0: PF2 PF3 PB2 PB7 PB6 PA4 PA3 PA2
+	// 15-8: PB3 PC4 PC5 PC6 PC7 PD5 PD7 PF4
+	///////////////////////////////////////////////////////////
+
+	//
 	// Setup I/O pins
 	///////////////////////////////////////////
     GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7);
     GPIOPinTypeGPIOInput(GPIO_PORTB_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4 | GPIO_PIN_5);
     GPIOPinTypeGPIOInput(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
-    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_4);
+    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
 
 
     GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
+    GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
+
     GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7, 0);
+
     GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7, 0);
+
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
 
     // PinMux spit this out for me. I'll just trust it for now
     // First open the lock and select the bits we want to modify in the GPIO commit register.
     HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
     HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x80;
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_7);
-    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_5);
+    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_5 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_5 | GPIO_PIN_7, 0);
 
 
 	//
@@ -97,9 +132,9 @@ void initPeripherals(){
 	//
 	// Enable Serial Interrupts (and in startup_css.c)
 	/////////////////////////////////////////
-	IntMasterEnable();
-	IntEnable(INT_UART0);
-	UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+	//IntMasterEnable();
+	//IntEnable(INT_UART0);
+	//UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
 
 }
 
