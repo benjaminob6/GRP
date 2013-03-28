@@ -189,4 +189,22 @@ Primary Goals:
 This introduced the use of gdb and stlink-hexane to perform various debugging and uploading tasks. Results so far are in line with what is presented in the document.
 
 
+March 27, 2013
+-----------------------------------
 
+Primary Goals:
+- [x] Switch back to the Stellaris
+- [X] Get all 16 Inputs and Outputs working
+- [X] Establish Serial Connection With MCU
+- [X] Test Isolator Bank
+- [ ] Implement Serial Protocol
+
+After attempting to get the STM32VLDISCOVERY VCP working for a couple of days to no avail, the processor has been abandoned. Work began on the Stellaris platform. Using the PinMux utility to generate the GPIO configuration automatically, the number of available pins increased. (Some were protected function by the processor and required special instructions to access. These are what PinMux generated).
+
+Development on the Stellaris went smoothly. Using LEDs and an Arduino it was possible to validate the the routines for reading and writting the Sensor and Actuator values. Full 16 In, 16 Out has been achieved.
+
+A few of the Si Isolator units were tested with the Stellaris driving them at 3.3V and the Arudino at 5V. Results are promissing and the full amount required should fit well within the power budget.
+
+Time ran long trying to figure out how to build a flash image for the Stellaris, so the serial protocol code has yet to be implemented. This needs to happen ASAP, so tomorrow is probably the day I can finally check off 'Hash out serial comms'.
+
+After that, it is a matter of finializing the circuit layout and placing it on a protoboard instead of breadboard. I attempted to make the cables necessary for the Arcom to connect, but failed to acquire the wire strippers before the hardware store closed.
