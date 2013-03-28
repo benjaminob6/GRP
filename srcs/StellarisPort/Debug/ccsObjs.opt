@@ -1,1 +1,0 @@
-"./startup_ccs.obj" "./main.obj" -l"libc.a" -l"C:\ti\mcusdk_1_00_01_74\products\StellarisWare_9107\driverlib\ccs-cm4f\Debug\driverlib-cm4f.lib" "../lm4f120h5qr.cmd" 
