@@ -25,6 +25,7 @@
 // Functions
 /////////////////////////////////////////
 void initPeripherals();
+unsigned short GetActuators();
 
 void UARTSend(char* cBuffer, unsigned long ulCount){
 	while(ulCount--){
@@ -47,9 +48,39 @@ void main(void){
 	initPeripherals();
 
 	while(1){
-		UARTSend("Hello WORLD!\r\n",14);
-		SysCtlDelay(500*SYS_MILLIS);
+		//UARTSend("Hello WORLD!\r\n",14);
+		unsigned short test = GetActuators();
+		SysCtlDelay(15*SYS_MILLIS);
 	}
+}
+
+unsigned short GetActuators(){
+	// 15-8: PB5 PD0 PD1 PD2 PD3 PE1 PE2 PE3
+	// 7-0: PB0 PB1 PE4 PE5 PB4 PA5 PA6 PA7
+
+	unsigned short PortA = GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_7 | GPIO_PIN_6 | GPIO_PIN_5);
+	unsigned short PortB = GPIOPinRead(GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_1 | GPIO_PIN_0);
+	unsigned short PortD = GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0);
+	unsigned short PortE = GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4 |GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 );
+
+	unsigned short ActuatorValues = (PortB & GPIO_PIN_5) << (15-5) |
+									(PortD & GPIO_PIN_0) << (14-0) |
+									(PortD & GPIO_PIN_1) << (13-1) |
+									(PortD & GPIO_PIN_2) << (12-2) |
+									(PortD & GPIO_PIN_3) << (11-3) |
+									(PortE & GPIO_PIN_1) << (10-1) |
+									(PortE & GPIO_PIN_2) << (9-2) |
+									(PortE & GPIO_PIN_3) << (8-3) |
+									(PortB & GPIO_PIN_0) << (7-0) |
+									(PortB & GPIO_PIN_1) << (6-1) |
+									(PortE & GPIO_PIN_4) << (5-4) |
+									(PortE & GPIO_PIN_5) >> (5-4) |
+									(PortB & GPIO_PIN_4) >> (4-3) |
+									(PortA & GPIO_PIN_5) >> (5-2) |
+									(PortA & GPIO_PIN_6) >> (6-1) |
+									(PortA & GPIO_PIN_7) >> (7-0);
+
+	return ActuatorValues;
 }
 
 //
@@ -132,9 +163,9 @@ void initPeripherals(){
 	//
 	// Enable Serial Interrupts (and in startup_css.c)
 	/////////////////////////////////////////
-	//IntMasterEnable();
-	//IntEnable(INT_UART0);
-	//UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+	IntMasterEnable();
+	IntEnable(INT_UART0);
+	UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
 
 }
 
