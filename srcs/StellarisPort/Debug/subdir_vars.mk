@@ -7,21 +7,27 @@ CMD_SRCS += \
 ../lm4f120h5qr.cmd 
 
 C_SRCS += \
-../main.c 
+../main.c \
+../startup_ccs.c 
 
 OBJS += \
-./main.obj 
+./main.obj \
+./startup_ccs.obj 
 
 C_DEPS += \
-./main.pp 
+./main.pp \
+./startup_ccs.pp 
 
 C_DEPS__QUOTED += \
-"main.pp" 
+"main.pp" \
+"startup_ccs.pp" 
 
 OBJS__QUOTED += \
-"main.obj" 
+"main.obj" \
+"startup_ccs.obj" 
 
 C_SRCS__QUOTED += \
-"../main.c" 
+"../main.c" \
+"../startup_ccs.c" 
 
 

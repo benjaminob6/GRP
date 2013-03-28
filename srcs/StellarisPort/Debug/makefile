@@ -8,6 +8,7 @@ CG_TOOL_ROOT := C:/ti/ccsv5/tools/compiler/tms470_4.9.5
 
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
+"./startup_ccs.obj" \
 "./main.obj" \
 -l"libc.a" \
 -l"C:\ti\mcusdk_1_00_01_74\products\StellarisWare_9107\driverlib\ccs-cm4f\Debug\driverlib-cm4f.lib" \
@@ -119,16 +120,22 @@ StellarisPort.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/bin/cl470" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --diag_warning=225 --display_error_number -z --stack_size=256 -m"StellarisPort.map" --heap_size=0 -i"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/lib" -i"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include" --reread_libs --warn_sections --display_error_number --rom_model -o "StellarisPort.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
+	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "StellarisPort.out"
-	-$(RM) "main.pp" 
-	-$(RM) "main.obj" 
+	-$(RM) "main.pp" "startup_ccs.pp" 
+	-$(RM) "main.obj" "startup_ccs.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
+post-build:
+	-@echo 'MakeABin'
+	-"C:/ti/ccsv5/utils/tiobj2bin/tiobj2bin" "StellarisPort.out" "StellarisPort.bin" "C:/ti/ccsv5/tools/compiler/tms470_4.9.5/bin/ofd470" "C:/ti/ccsv5/tools/compiler/tms470_4.9.5/bin/hex470" "C:/ti/ccsv5/utils/tiobj2bin/mkhex4bin"
+	-@echo ' '
+
 .PHONY: all clean dependents
-.SECONDARY:
+.SECONDARY: post-build
 
 -include ../makefile.targets

@@ -26,6 +26,7 @@
 /////////////////////////////////////////
 void initPeripherals();
 unsigned short GetActuators();
+void SetSensors(unsigned short SensorValue);
 
 void UARTSend(char* cBuffer, unsigned long ulCount){
 	while(ulCount--){
@@ -45,18 +46,23 @@ void __error__(char *pcFilename, unsigned long ulLine)
 ////////////////////////////////////////
 void main(void){
 
+	unsigned short testval = 0;
+
 	initPeripherals();
 
 	while(1){
 		//UARTSend("Hello WORLD!\r\n",14);
-		unsigned short test = GetActuators();
-		SysCtlDelay(15*SYS_MILLIS);
+		//unsigned short test = GetActuators();
+		SetSensors(testval);
+		SysCtlDelay(5*SYS_MILLIS);
+		testval ++;
 	}
 }
 
+
 unsigned short GetActuators(){
-	// 15-8: PB5 PD0 PD1 PD2 PD3 PE1 PE2 PE3
-	// 7-0: PB0 PB1 PE4 PE5 PB4 PA5 PA6 PA7
+	// 15-8:	PB5 PD0 PD1 PD2		PD3 PE1 PE2 PE3
+	// 7-0: 	PB0 PB1 PE4 PE5	 	PB4 PA5 PA6 PA7
 
 	unsigned short PortA = GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_7 | GPIO_PIN_6 | GPIO_PIN_5);
 	unsigned short PortB = GPIOPinRead(GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_1 | GPIO_PIN_0);
@@ -81,6 +87,48 @@ unsigned short GetActuators(){
 									(PortA & GPIO_PIN_7) >> (7-0);
 
 	return ActuatorValues;
+}
+
+void SetSensors(unsigned short SensorValue){
+	// 15-8: 	PB3 PC4 PC5 PC6  	PC7 PD6 PD7 PF4
+	// 7-0: 	PF2 PF3 PB2 PB7   	PB6 PA4 PA3 PA2
+
+	unsigned char PortABits = (SensorValue & (1 << 2)) << 2 | /* bit 2 to bit 4 */
+							  (SensorValue & (1 << 1)) << 2 | /* bit 1 to bit 3 */
+							  (SensorValue & (1 << 0)) << 2 ; /* bit 0 to bit 2 */
+
+	unsigned char PortBBits = (SensorValue & (1 << 15)) >> 12 | /* bit 15 to bit 3*/
+							  (SensorValue & (1 <<  5)) >> 3 | /* bit 5 to bit 2 */
+							  (SensorValue & (1 <<  4)) << 3 | /* bit 4 to bit 7 */
+							  (SensorValue & (1 <<  3)) << 3 ; /* bit 3 to bit 6 */
+
+	unsigned char PortCBits = (SensorValue & (1 << 14)) >> 10 | /* bit 14 to bit 4 */
+							  (SensorValue & (1 << 13)) >> 8 | /* bit 13 to bit 5 */
+							  (SensorValue & (1 << 12)) >> 6 | /* bit 12 to bit 6 */
+							  (SensorValue & (1 << 11)) >> 4 ; /* bit 11 to bit 7 */
+
+	unsigned char PortDBits = (SensorValue & (1 << 10)) >> 4 | /* bit 10 to bit 6 */
+							  (SensorValue & (1 << 9)) >> 2 ; /* bit 9 to bit 7 */
+
+	unsigned char PortFBits = (SensorValue & (1 << 8)) >> 4 | /* bit 8 to bit 4 */
+							  (SensorValue & (1 << 7)) >> 5 | /* bit 7 to bit 2 */
+							  (SensorValue & (1 << 6)) >> 3 ; /* bit 6 to bit 3 */
+
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
+    GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, PortABits);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7, PortBBits);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7, PortCBits);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7, PortDBits);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, PortFBits);
 }
 
 //
@@ -114,7 +162,7 @@ void initPeripherals(){
 	//
 	// Outputs (Sensors)
 	// 7-0: PF2 PF3 PB2 PB7 PB6 PA4 PA3 PA2
-	// 15-8: PB3 PC4 PC5 PC6 PC7 PD5 PD7 PF4
+	// 15-8: PB3 PC4 PC5 PC6 PC7 PD6 PD7 PF4
 	///////////////////////////////////////////////////////////
 
 	//
@@ -138,12 +186,14 @@ void initPeripherals(){
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
     GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
 
+    /*
     // PinMux spit this out for me. I'll just trust it for now
     // First open the lock and select the bits we want to modify in the GPIO commit register.
     HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
     HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x80;
-    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_5 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_5 | GPIO_PIN_7, 0);
+    */
+    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7, 0);
 
 
 	//
