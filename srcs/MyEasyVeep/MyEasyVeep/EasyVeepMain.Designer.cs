@@ -39,23 +39,17 @@
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblProcessDesc = new System.Windows.Forms.Label();
             this.groupIOSensors = new System.Windows.Forms.GroupBox();
-            this.sensorIndicator16 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator4 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator15 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator1 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator14 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator2 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator13 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator3 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator12 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator5 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator11 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator6 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator10 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator7 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator9 = new System.Windows.Forms.PictureBox();
-            this.sensorIndicator8 = new System.Windows.Forms.PictureBox();
             this.groupIOActuators = new System.Windows.Forms.GroupBox();
+            this.inputUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.menuMainEasyVeep = new System.Windows.Forms.MenuStrip();
+            this.myEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialEasyPort = new System.IO.Ports.SerialPort(this.components);
             this.actuatorIndicator16 = new System.Windows.Forms.PictureBox();
             this.actuatorIndicator15 = new System.Windows.Forms.PictureBox();
             this.actuatorIndicator14 = new System.Windows.Forms.PictureBox();
@@ -72,37 +66,29 @@
             this.actuatorIndicator3 = new System.Windows.Forms.PictureBox();
             this.actuatorIndicator2 = new System.Windows.Forms.PictureBox();
             this.actuatorIndicator1 = new System.Windows.Forms.PictureBox();
-            this.inputUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.menuMainEasyVeep = new System.Windows.Forms.MenuStrip();
-            this.myEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sensorIndicator16 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator4 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator15 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator1 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator14 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator2 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator13 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator3 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator12 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator5 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator11 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator6 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator10 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator7 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator9 = new System.Windows.Forms.PictureBox();
+            this.sensorIndicator8 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.gdProcesses.SuspendLayout();
             this.gbModelInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInOutVal)).BeginInit();
             this.groupIOSensors.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator8)).BeginInit();
             this.groupIOActuators.SuspendLayout();
+            this.menuMainEasyVeep.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator14)).BeginInit();
@@ -119,7 +105,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).BeginInit();
-            this.menuMainEasyVeep.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator8)).BeginInit();
             this.SuspendLayout();
             // 
             // axShockwaveFlash1
@@ -227,182 +228,6 @@
             this.groupIOSensors.TabStop = false;
             this.groupIOSensors.Text = "Sensors";
             // 
-            // sensorIndicator16
-            // 
-            this.sensorIndicator16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.BackgroundImage")));
-            this.sensorIndicator16.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.Image")));
-            this.sensorIndicator16.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.InitialImage")));
-            this.sensorIndicator16.Location = new System.Drawing.Point(44, 283);
-            this.sensorIndicator16.Name = "sensorIndicator16";
-            this.sensorIndicator16.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator16.TabIndex = 50;
-            this.sensorIndicator16.TabStop = false;
-            // 
-            // sensorIndicator4
-            // 
-            this.sensorIndicator4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.BackgroundImage")));
-            this.sensorIndicator4.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.Image")));
-            this.sensorIndicator4.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.InitialImage")));
-            this.sensorIndicator4.Location = new System.Drawing.Point(6, 129);
-            this.sensorIndicator4.Name = "sensorIndicator4";
-            this.sensorIndicator4.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator4.TabIndex = 38;
-            this.sensorIndicator4.TabStop = false;
-            // 
-            // sensorIndicator15
-            // 
-            this.sensorIndicator15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.BackgroundImage")));
-            this.sensorIndicator15.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.Image")));
-            this.sensorIndicator15.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.InitialImage")));
-            this.sensorIndicator15.Location = new System.Drawing.Point(44, 245);
-            this.sensorIndicator15.Name = "sensorIndicator15";
-            this.sensorIndicator15.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator15.TabIndex = 49;
-            this.sensorIndicator15.TabStop = false;
-            // 
-            // sensorIndicator1
-            // 
-            this.sensorIndicator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.BackgroundImage")));
-            this.sensorIndicator1.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.Image")));
-            this.sensorIndicator1.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.InitialImage")));
-            this.sensorIndicator1.Location = new System.Drawing.Point(6, 15);
-            this.sensorIndicator1.Name = "sensorIndicator1";
-            this.sensorIndicator1.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator1.TabIndex = 35;
-            this.sensorIndicator1.TabStop = false;
-            // 
-            // sensorIndicator14
-            // 
-            this.sensorIndicator14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.BackgroundImage")));
-            this.sensorIndicator14.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.Image")));
-            this.sensorIndicator14.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.InitialImage")));
-            this.sensorIndicator14.Location = new System.Drawing.Point(44, 205);
-            this.sensorIndicator14.Name = "sensorIndicator14";
-            this.sensorIndicator14.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator14.TabIndex = 48;
-            this.sensorIndicator14.TabStop = false;
-            // 
-            // sensorIndicator2
-            // 
-            this.sensorIndicator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.BackgroundImage")));
-            this.sensorIndicator2.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.Image")));
-            this.sensorIndicator2.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.InitialImage")));
-            this.sensorIndicator2.Location = new System.Drawing.Point(6, 53);
-            this.sensorIndicator2.Name = "sensorIndicator2";
-            this.sensorIndicator2.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator2.TabIndex = 36;
-            this.sensorIndicator2.TabStop = false;
-            // 
-            // sensorIndicator13
-            // 
-            this.sensorIndicator13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.BackgroundImage")));
-            this.sensorIndicator13.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.Image")));
-            this.sensorIndicator13.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.InitialImage")));
-            this.sensorIndicator13.Location = new System.Drawing.Point(44, 167);
-            this.sensorIndicator13.Name = "sensorIndicator13";
-            this.sensorIndicator13.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator13.TabIndex = 47;
-            this.sensorIndicator13.TabStop = false;
-            // 
-            // sensorIndicator3
-            // 
-            this.sensorIndicator3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.BackgroundImage")));
-            this.sensorIndicator3.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.Image")));
-            this.sensorIndicator3.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.InitialImage")));
-            this.sensorIndicator3.Location = new System.Drawing.Point(6, 91);
-            this.sensorIndicator3.Name = "sensorIndicator3";
-            this.sensorIndicator3.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator3.TabIndex = 37;
-            this.sensorIndicator3.TabStop = false;
-            // 
-            // sensorIndicator12
-            // 
-            this.sensorIndicator12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.BackgroundImage")));
-            this.sensorIndicator12.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.Image")));
-            this.sensorIndicator12.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.InitialImage")));
-            this.sensorIndicator12.Location = new System.Drawing.Point(44, 129);
-            this.sensorIndicator12.Name = "sensorIndicator12";
-            this.sensorIndicator12.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator12.TabIndex = 46;
-            this.sensorIndicator12.TabStop = false;
-            // 
-            // sensorIndicator5
-            // 
-            this.sensorIndicator5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.BackgroundImage")));
-            this.sensorIndicator5.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.Image")));
-            this.sensorIndicator5.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.InitialImage")));
-            this.sensorIndicator5.Location = new System.Drawing.Point(6, 167);
-            this.sensorIndicator5.Name = "sensorIndicator5";
-            this.sensorIndicator5.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator5.TabIndex = 39;
-            this.sensorIndicator5.TabStop = false;
-            // 
-            // sensorIndicator11
-            // 
-            this.sensorIndicator11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.BackgroundImage")));
-            this.sensorIndicator11.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.Image")));
-            this.sensorIndicator11.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.InitialImage")));
-            this.sensorIndicator11.Location = new System.Drawing.Point(44, 91);
-            this.sensorIndicator11.Name = "sensorIndicator11";
-            this.sensorIndicator11.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator11.TabIndex = 45;
-            this.sensorIndicator11.TabStop = false;
-            // 
-            // sensorIndicator6
-            // 
-            this.sensorIndicator6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.BackgroundImage")));
-            this.sensorIndicator6.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.Image")));
-            this.sensorIndicator6.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.InitialImage")));
-            this.sensorIndicator6.Location = new System.Drawing.Point(6, 205);
-            this.sensorIndicator6.Name = "sensorIndicator6";
-            this.sensorIndicator6.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator6.TabIndex = 40;
-            this.sensorIndicator6.TabStop = false;
-            // 
-            // sensorIndicator10
-            // 
-            this.sensorIndicator10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.BackgroundImage")));
-            this.sensorIndicator10.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.Image")));
-            this.sensorIndicator10.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.InitialImage")));
-            this.sensorIndicator10.Location = new System.Drawing.Point(44, 53);
-            this.sensorIndicator10.Name = "sensorIndicator10";
-            this.sensorIndicator10.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator10.TabIndex = 44;
-            this.sensorIndicator10.TabStop = false;
-            // 
-            // sensorIndicator7
-            // 
-            this.sensorIndicator7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.BackgroundImage")));
-            this.sensorIndicator7.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.Image")));
-            this.sensorIndicator7.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.InitialImage")));
-            this.sensorIndicator7.Location = new System.Drawing.Point(6, 245);
-            this.sensorIndicator7.Name = "sensorIndicator7";
-            this.sensorIndicator7.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator7.TabIndex = 41;
-            this.sensorIndicator7.TabStop = false;
-            // 
-            // sensorIndicator9
-            // 
-            this.sensorIndicator9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.BackgroundImage")));
-            this.sensorIndicator9.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.Image")));
-            this.sensorIndicator9.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.InitialImage")));
-            this.sensorIndicator9.Location = new System.Drawing.Point(44, 15);
-            this.sensorIndicator9.Name = "sensorIndicator9";
-            this.sensorIndicator9.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator9.TabIndex = 43;
-            this.sensorIndicator9.TabStop = false;
-            // 
-            // sensorIndicator8
-            // 
-            this.sensorIndicator8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.BackgroundImage")));
-            this.sensorIndicator8.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.Image")));
-            this.sensorIndicator8.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.InitialImage")));
-            this.sensorIndicator8.Location = new System.Drawing.Point(6, 283);
-            this.sensorIndicator8.Name = "sensorIndicator8";
-            this.sensorIndicator8.Size = new System.Drawing.Size(32, 32);
-            this.sensorIndicator8.TabIndex = 42;
-            this.sensorIndicator8.TabStop = false;
-            // 
             // groupIOActuators
             // 
             this.groupIOActuators.Controls.Add(this.actuatorIndicator16);
@@ -427,6 +252,77 @@
             this.groupIOActuators.TabIndex = 32;
             this.groupIOActuators.TabStop = false;
             this.groupIOActuators.Text = "Actuators";
+            // 
+            // inputUpdateTimer
+            // 
+            this.inputUpdateTimer.Tick += new System.EventHandler(this.inputUpdateTimer_Tick);
+            // 
+            // menuMainEasyVeep
+            // 
+            this.menuMainEasyVeep.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myEasyVeepToolStripMenuItem,
+            this.configurationToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuMainEasyVeep.Location = new System.Drawing.Point(0, 0);
+            this.menuMainEasyVeep.Name = "menuMainEasyVeep";
+            this.menuMainEasyVeep.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuMainEasyVeep.Size = new System.Drawing.Size(1005, 24);
+            this.menuMainEasyVeep.TabIndex = 33;
+            // 
+            // myEasyVeepToolStripMenuItem
+            // 
+            this.myEasyVeepToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.myEasyVeepToolStripMenuItem.Name = "myEasyVeepToolStripMenuItem";
+            this.myEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.myEasyVeepToolStripMenuItem.Text = "MyEasyVeep";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serialDeviceToolStripMenuItem,
+            this.enableAutoModeToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            // 
+            // serialDeviceToolStripMenuItem
+            // 
+            this.serialDeviceToolStripMenuItem.Name = "serialDeviceToolStripMenuItem";
+            this.serialDeviceToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.serialDeviceToolStripMenuItem.Text = "Serial Device";
+            // 
+            // enableAutoModeToolStripMenuItem
+            // 
+            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
+            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
+            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMyEasyVeepToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // aboutMyEasyVeepToolStripMenuItem
+            // 
+            this.aboutMyEasyVeepToolStripMenuItem.Name = "aboutMyEasyVeepToolStripMenuItem";
+            this.aboutMyEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.aboutMyEasyVeepToolStripMenuItem.Text = "About MyEasyVeep";
+            // 
+            // serialEasyPort
+            // 
+            this.serialEasyPort.BaudRate = 115200;
+            this.serialEasyPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialEasyPort_DataReceived);
             // 
             // actuatorIndicator16
             // 
@@ -604,71 +500,181 @@
             this.actuatorIndicator1.TabIndex = 19;
             this.actuatorIndicator1.TabStop = false;
             // 
-            // inputUpdateTimer
+            // sensorIndicator16
             // 
-            this.inputUpdateTimer.Tick += new System.EventHandler(this.inputUpdateTimer_Tick);
+            this.sensorIndicator16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.BackgroundImage")));
+            this.sensorIndicator16.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.Image")));
+            this.sensorIndicator16.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator16.InitialImage")));
+            this.sensorIndicator16.Location = new System.Drawing.Point(44, 283);
+            this.sensorIndicator16.Name = "sensorIndicator16";
+            this.sensorIndicator16.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator16.TabIndex = 50;
+            this.sensorIndicator16.TabStop = false;
             // 
-            // menuMainEasyVeep
+            // sensorIndicator4
             // 
-            this.menuMainEasyVeep.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.myEasyVeepToolStripMenuItem,
-            this.configurationToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuMainEasyVeep.Location = new System.Drawing.Point(0, 0);
-            this.menuMainEasyVeep.Name = "menuMainEasyVeep";
-            this.menuMainEasyVeep.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuMainEasyVeep.Size = new System.Drawing.Size(1005, 24);
-            this.menuMainEasyVeep.TabIndex = 33;
+            this.sensorIndicator4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.BackgroundImage")));
+            this.sensorIndicator4.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.Image")));
+            this.sensorIndicator4.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator4.InitialImage")));
+            this.sensorIndicator4.Location = new System.Drawing.Point(6, 129);
+            this.sensorIndicator4.Name = "sensorIndicator4";
+            this.sensorIndicator4.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator4.TabIndex = 38;
+            this.sensorIndicator4.TabStop = false;
             // 
-            // myEasyVeepToolStripMenuItem
+            // sensorIndicator15
             // 
-            this.myEasyVeepToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitToolStripMenuItem});
-            this.myEasyVeepToolStripMenuItem.Name = "myEasyVeepToolStripMenuItem";
-            this.myEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.myEasyVeepToolStripMenuItem.Text = "MyEasyVeep";
+            this.sensorIndicator15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.BackgroundImage")));
+            this.sensorIndicator15.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.Image")));
+            this.sensorIndicator15.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator15.InitialImage")));
+            this.sensorIndicator15.Location = new System.Drawing.Point(44, 245);
+            this.sensorIndicator15.Name = "sensorIndicator15";
+            this.sensorIndicator15.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator15.TabIndex = 49;
+            this.sensorIndicator15.TabStop = false;
             // 
-            // quitToolStripMenuItem
+            // sensorIndicator1
             // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
+            this.sensorIndicator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.BackgroundImage")));
+            this.sensorIndicator1.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.Image")));
+            this.sensorIndicator1.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator1.InitialImage")));
+            this.sensorIndicator1.Location = new System.Drawing.Point(6, 15);
+            this.sensorIndicator1.Name = "sensorIndicator1";
+            this.sensorIndicator1.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator1.TabIndex = 35;
+            this.sensorIndicator1.TabStop = false;
             // 
-            // configurationToolStripMenuItem
+            // sensorIndicator14
             // 
-            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serialDeviceToolStripMenuItem,
-            this.enableAutoModeToolStripMenuItem});
-            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.configurationToolStripMenuItem.Text = "Configuration";
+            this.sensorIndicator14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.BackgroundImage")));
+            this.sensorIndicator14.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.Image")));
+            this.sensorIndicator14.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator14.InitialImage")));
+            this.sensorIndicator14.Location = new System.Drawing.Point(44, 205);
+            this.sensorIndicator14.Name = "sensorIndicator14";
+            this.sensorIndicator14.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator14.TabIndex = 48;
+            this.sensorIndicator14.TabStop = false;
             // 
-            // serialDeviceToolStripMenuItem
+            // sensorIndicator2
             // 
-            this.serialDeviceToolStripMenuItem.Name = "serialDeviceToolStripMenuItem";
-            this.serialDeviceToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.serialDeviceToolStripMenuItem.Text = "Serial Device";
+            this.sensorIndicator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.BackgroundImage")));
+            this.sensorIndicator2.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.Image")));
+            this.sensorIndicator2.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator2.InitialImage")));
+            this.sensorIndicator2.Location = new System.Drawing.Point(6, 53);
+            this.sensorIndicator2.Name = "sensorIndicator2";
+            this.sensorIndicator2.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator2.TabIndex = 36;
+            this.sensorIndicator2.TabStop = false;
             // 
-            // enableAutoModeToolStripMenuItem
+            // sensorIndicator13
             // 
-            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
-            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
-            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
+            this.sensorIndicator13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.BackgroundImage")));
+            this.sensorIndicator13.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.Image")));
+            this.sensorIndicator13.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator13.InitialImage")));
+            this.sensorIndicator13.Location = new System.Drawing.Point(44, 167);
+            this.sensorIndicator13.Name = "sensorIndicator13";
+            this.sensorIndicator13.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator13.TabIndex = 47;
+            this.sensorIndicator13.TabStop = false;
             // 
-            // aboutToolStripMenuItem
+            // sensorIndicator3
             // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutMyEasyVeepToolStripMenuItem});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.sensorIndicator3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.BackgroundImage")));
+            this.sensorIndicator3.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.Image")));
+            this.sensorIndicator3.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator3.InitialImage")));
+            this.sensorIndicator3.Location = new System.Drawing.Point(6, 91);
+            this.sensorIndicator3.Name = "sensorIndicator3";
+            this.sensorIndicator3.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator3.TabIndex = 37;
+            this.sensorIndicator3.TabStop = false;
             // 
-            // aboutMyEasyVeepToolStripMenuItem
+            // sensorIndicator12
             // 
-            this.aboutMyEasyVeepToolStripMenuItem.Name = "aboutMyEasyVeepToolStripMenuItem";
-            this.aboutMyEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.aboutMyEasyVeepToolStripMenuItem.Text = "About MyEasyVeep";
+            this.sensorIndicator12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.BackgroundImage")));
+            this.sensorIndicator12.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.Image")));
+            this.sensorIndicator12.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator12.InitialImage")));
+            this.sensorIndicator12.Location = new System.Drawing.Point(44, 129);
+            this.sensorIndicator12.Name = "sensorIndicator12";
+            this.sensorIndicator12.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator12.TabIndex = 46;
+            this.sensorIndicator12.TabStop = false;
+            // 
+            // sensorIndicator5
+            // 
+            this.sensorIndicator5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.BackgroundImage")));
+            this.sensorIndicator5.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.Image")));
+            this.sensorIndicator5.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator5.InitialImage")));
+            this.sensorIndicator5.Location = new System.Drawing.Point(6, 167);
+            this.sensorIndicator5.Name = "sensorIndicator5";
+            this.sensorIndicator5.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator5.TabIndex = 39;
+            this.sensorIndicator5.TabStop = false;
+            // 
+            // sensorIndicator11
+            // 
+            this.sensorIndicator11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.BackgroundImage")));
+            this.sensorIndicator11.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.Image")));
+            this.sensorIndicator11.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator11.InitialImage")));
+            this.sensorIndicator11.Location = new System.Drawing.Point(44, 91);
+            this.sensorIndicator11.Name = "sensorIndicator11";
+            this.sensorIndicator11.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator11.TabIndex = 45;
+            this.sensorIndicator11.TabStop = false;
+            // 
+            // sensorIndicator6
+            // 
+            this.sensorIndicator6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.BackgroundImage")));
+            this.sensorIndicator6.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.Image")));
+            this.sensorIndicator6.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator6.InitialImage")));
+            this.sensorIndicator6.Location = new System.Drawing.Point(6, 205);
+            this.sensorIndicator6.Name = "sensorIndicator6";
+            this.sensorIndicator6.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator6.TabIndex = 40;
+            this.sensorIndicator6.TabStop = false;
+            // 
+            // sensorIndicator10
+            // 
+            this.sensorIndicator10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.BackgroundImage")));
+            this.sensorIndicator10.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.Image")));
+            this.sensorIndicator10.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator10.InitialImage")));
+            this.sensorIndicator10.Location = new System.Drawing.Point(44, 53);
+            this.sensorIndicator10.Name = "sensorIndicator10";
+            this.sensorIndicator10.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator10.TabIndex = 44;
+            this.sensorIndicator10.TabStop = false;
+            // 
+            // sensorIndicator7
+            // 
+            this.sensorIndicator7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.BackgroundImage")));
+            this.sensorIndicator7.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.Image")));
+            this.sensorIndicator7.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator7.InitialImage")));
+            this.sensorIndicator7.Location = new System.Drawing.Point(6, 245);
+            this.sensorIndicator7.Name = "sensorIndicator7";
+            this.sensorIndicator7.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator7.TabIndex = 41;
+            this.sensorIndicator7.TabStop = false;
+            // 
+            // sensorIndicator9
+            // 
+            this.sensorIndicator9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.BackgroundImage")));
+            this.sensorIndicator9.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.Image")));
+            this.sensorIndicator9.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator9.InitialImage")));
+            this.sensorIndicator9.Location = new System.Drawing.Point(44, 15);
+            this.sensorIndicator9.Name = "sensorIndicator9";
+            this.sensorIndicator9.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator9.TabIndex = 43;
+            this.sensorIndicator9.TabStop = false;
+            // 
+            // sensorIndicator8
+            // 
+            this.sensorIndicator8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.BackgroundImage")));
+            this.sensorIndicator8.Image = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.Image")));
+            this.sensorIndicator8.InitialImage = ((System.Drawing.Image)(resources.GetObject("sensorIndicator8.InitialImage")));
+            this.sensorIndicator8.Location = new System.Drawing.Point(6, 283);
+            this.sensorIndicator8.Name = "sensorIndicator8";
+            this.sensorIndicator8.Size = new System.Drawing.Size(32, 32);
+            this.sensorIndicator8.TabIndex = 42;
+            this.sensorIndicator8.TabStop = false;
             // 
             // EasyVeepMain
             // 
@@ -692,23 +698,9 @@
             this.gbModelInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInOutVal)).EndInit();
             this.groupIOSensors.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator8)).EndInit();
             this.groupIOActuators.ResumeLayout(false);
+            this.menuMainEasyVeep.ResumeLayout(false);
+            this.menuMainEasyVeep.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator14)).EndInit();
@@ -725,8 +717,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).EndInit();
-            this.menuMainEasyVeep.ResumeLayout(false);
-            this.menuMainEasyVeep.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -785,6 +791,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMyEasyVeepToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableAutoModeToolStripMenuItem;
+        private System.IO.Ports.SerialPort serialEasyPort;
     }
 }
 

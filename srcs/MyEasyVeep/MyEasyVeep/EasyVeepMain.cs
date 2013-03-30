@@ -21,6 +21,9 @@ namespace MyEasyVeep
         private List<PictureBox> SensorIndicators = new List<PictureBox>();
         private List<PictureBox> ActuatorIndicators = new List<PictureBox>();
         private ProcessInfo movieInfo;
+        private SerialMonitor MonitorWindow;
+        private string LastSensorValues;
+        private string CurrentCommand;
         
         public EasyVeepMain()
         {
@@ -41,34 +44,91 @@ namespace MyEasyVeep
             {
                 foreach (string ComPort in portNames)
                 {
-                    ComPortMenuItems.Add(ComPort);
+                    ComPortMenuItems.Add(ComPort,null, new EventHandler(ComPortSelected));
                 }
             }
             else
             {
                 ComPortMenuItems.Add("No Devices Found");
             }
-
-            serialDeviceToolStripMenuItem.DropDownItemClicked += new ToolStripItemClickedEventHandler(serialDeviceToolStripMenuItem_DropDownItemClicked);
         }
 
+
         /// <summary>
-        /// Handels the click event when a Serial Device is selected
+        /// Handles the click event when a Serial Device is selected
         /// </summary>
         /// <param name="sender">Dropdown menu sending event</param>
         /// <param name="e">The object which was clicked</param>
-        void serialDeviceToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        void ComPortSelected(object sender, EventArgs e)
         {
-            if (e.ClickedItem.Text.IndexOf("COM") > -1)
+            if (serialEasyPort.IsOpen)
             {
-                MessageBox.Show(String.Format("Here's where I would open {0} for you!", e.ClickedItem.Text));
+                MessageBox.Show("Please close the existing COM port before selecting a new one.", "Error: COM Port Open");
+            }
+            else
+            {
+                ToolStripItem clickedItem = (ToolStripItem)sender;
+
+                serialEasyPort.PortName = clickedItem.Text;
+                serialEasyPort.Open();
+
+                //Disable the buttons and auto mode if serial is running.
+                groupIOActuators.Enabled = false;
+                movieInfo.AutoMode = false;
+
+
+                MonitorWindow.LogMessage(new SerialLogEvent(String.Format("{0} Port Open",clickedItem.Text),SerialLogEventType.Administration));
+
+                serialDeviceToolStripMenuItem.DropDownItems.Add("Close COM Port", null, new EventHandler(ComPortCloseSelected));
             }
         }
+
+        /// <summary>
+        /// Closes the serial port if it is open
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void ComPortCloseSelected(object sender, EventArgs e)
+        {
+            if (serialEasyPort.IsOpen)
+            {
+                serialEasyPort.Close();
+                LogSerialMessage(String.Format("{0} Port Closed",serialEasyPort.PortName),SerialLogEventType.Administration);
+            }
+
+            groupIOActuators.Enabled = true;
+
+            serialDeviceToolStripMenuItem.DropDownItems.RemoveAt(serialDeviceToolStripMenuItem.DropDownItems.Count-1);
+        }
+
+        private void SensorValuesChanged()
+        {
+            WriteSerialOutput("S"+this.GetSensorValueWord());
+        }
+
+        private void WriteSerialOutput(string BytesOut)
+        {
+            if (serialEasyPort.IsOpen)
+            {
+                serialEasyPort.Write(BytesOut+"\r");
+                LogSerialMessage(BytesOut, SerialLogEventType.Transmitt);
+            }
+        }
+
+
+        private void LogSerialMessage(string Message, SerialLogEventType type)
+        {
+            MonitorWindow.LogMessage(new SerialLogEvent(Message,type));
+        }
+
 
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MonitorWindow = new SerialMonitor();
+            MonitorWindow.Show();
+
             UpdateDeviceList();
 
 
@@ -83,6 +143,8 @@ namespace MyEasyVeep
             
             PopulateProcessBox();
         }
+
+
 
         void EasyVeepMain_Click(object sender, EventArgs e)
         {
@@ -247,8 +309,35 @@ namespace MyEasyVeep
                 {
                     Console.WriteLine("Exception Thrown Getting Sensor Value" + ds.SensorIndex);
                 }
-            }   
+            }
+
+            if (this.LastSensorValues != GetSensorValueWord())
+            {
+                this.SensorValuesChanged();
+            }
+
+            this.LastSensorValues = GetSensorValueWord();
         }
+
+
+        private string GetSensorValueWord()
+        {
+            UInt16 IntVal = 0;
+            for (int i = 0; i < movieInfo.Sensors.Count(); i++ )
+            {
+                if (movieInfo.Sensors[i] != null)
+                {
+                    IntVal |= (UInt16)((movieInfo.Sensors[i].GetSensorValue() == "1" ? 1 : 0) << i);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return IntVal.ToString("X4"); 
+        }
+
 
         private void enableAutoModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -263,6 +352,16 @@ namespace MyEasyVeep
                 enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
                 groupIOActuators.Enabled = true;
             }
+        }
+
+        private void serialEasyPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            string availableBytes = "";
+            while (serialEasyPort.BytesToRead > 0)
+            {
+                availableBytes += serialEasyPort.ReadChar();
+            }
+
         }
     }
 }
