@@ -78,7 +78,6 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sELECTDEVICEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -646,17 +645,9 @@
             // 
             // serialDeviceToolStripMenuItem
             // 
-            this.serialDeviceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sELECTDEVICEToolStripMenuItem});
             this.serialDeviceToolStripMenuItem.Name = "serialDeviceToolStripMenuItem";
             this.serialDeviceToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.serialDeviceToolStripMenuItem.Text = "Serial Device";
-            // 
-            // sELECTDEVICEToolStripMenuItem
-            // 
-            this.sELECTDEVICEToolStripMenuItem.Name = "sELECTDEVICEToolStripMenuItem";
-            this.sELECTDEVICEToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.sELECTDEVICEToolStripMenuItem.Text = "----SELECT DEVICE----";
             // 
             // enableAutoModeToolStripMenuItem
             // 
@@ -791,7 +782,6 @@
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serialDeviceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sELECTDEVICEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMyEasyVeepToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableAutoModeToolStripMenuItem;

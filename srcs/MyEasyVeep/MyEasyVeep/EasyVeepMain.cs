@@ -27,8 +27,51 @@ namespace MyEasyVeep
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Updates the Configuration -> Serial Device Menu Options
+        /// </summary>
+        private void UpdateDeviceList()
+        {
+            string[] portNames = System.IO.Ports.SerialPort.GetPortNames();
+            ToolStripItemCollection ComPortMenuItems = serialDeviceToolStripMenuItem.DropDownItems;
+
+            ComPortMenuItems.Clear();
+
+            if (portNames != null && portNames.Length > 0)
+            {
+                foreach (string ComPort in portNames)
+                {
+                    ComPortMenuItems.Add(ComPort);
+                }
+            }
+            else
+            {
+                ComPortMenuItems.Add("No Devices Found");
+            }
+
+            serialDeviceToolStripMenuItem.DropDownItemClicked += new ToolStripItemClickedEventHandler(serialDeviceToolStripMenuItem_DropDownItemClicked);
+        }
+
+        /// <summary>
+        /// Handels the click event when a Serial Device is selected
+        /// </summary>
+        /// <param name="sender">Dropdown menu sending event</param>
+        /// <param name="e">The object which was clicked</param>
+        void serialDeviceToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text.IndexOf("COM") > -1)
+            {
+                MessageBox.Show(String.Format("Here's where I would open {0} for you!", e.ClickedItem.Text));
+            }
+        }
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            UpdateDeviceList();
+
+
             for (int i = 1; i <= 16; i++)
             {
                 PictureBox CurrentActuator = (this.Controls.Find("actuatorIndicator" + i, true).FirstOrDefault()) as PictureBox;
