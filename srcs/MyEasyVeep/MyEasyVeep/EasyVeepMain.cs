@@ -24,10 +24,13 @@ namespace MyEasyVeep
         private SerialMonitor MonitorWindow;
         private string LastSensorValues;
         private string CurrentCommand;
+        private Boolean EasyPortConnected = false;
         
         public EasyVeepMain()
         {
             InitializeComponent();
+
+            connectionTimeoutTimer.Tick += new EventHandler(connectionTimeoutTimer_Tick);
         }
 
         /// <summary>
@@ -78,9 +81,26 @@ namespace MyEasyVeep
 
 
                 MonitorWindow.LogMessage(new SerialLogEvent(String.Format("{0} Port Open",clickedItem.Text),SerialLogEventType.Administration));
+                SetupEasyPort(); //Ask the EasyPort to respond
+
+                connectionTimeoutTimer.Stop();
+                connectionTimeoutTimer.Interval = 1000;
+                connectionTimeoutTimer.Enabled = true;
+                connectionTimeoutTimer.Start();
+
 
                 serialDeviceToolStripMenuItem.DropDownItems.Add("Close COM Port", null, new EventHandler(ComPortCloseSelected));
             }
+        }
+
+        void connectionTimeoutTimer_Tick(object sender, EventArgs e)
+        {
+            CloseComPort();
+            connectionTimeoutTimer.Enabled = false;
+            connectionTimeoutTimer.Stop();
+            EasyPortConnected = false;
+
+            MessageBox.Show("Connection Timeout Exceeded, Closing COM Port");
         }
 
         /// <summary>
@@ -90,11 +110,18 @@ namespace MyEasyVeep
         /// <param name="e"></param>
         void ComPortCloseSelected(object sender, EventArgs e)
         {
+            CloseComPort();
+        }
+
+        private void CloseComPort()
+        {
             if (serialEasyPort.IsOpen)
             {
                 serialEasyPort.Close();
                 LogSerialMessage(String.Format("{0} Port Closed",serialEasyPort.PortName),SerialLogEventType.Administration);
             }
+
+            EasyPortConnected = false;
 
             groupIOActuators.Enabled = true;
 
@@ -103,14 +130,14 @@ namespace MyEasyVeep
 
         private void SensorValuesChanged()
         {
-            WriteSerialOutput("S"+this.GetSensorValueWord());
+            WriteSerialOutput("MAW="+this.GetSensorValueWord());
         }
 
         private void WriteSerialOutput(string BytesOut)
         {
-            if (serialEasyPort.IsOpen)
+            if (serialEasyPort.IsOpen && EasyPortConnected)
             {
-                serialEasyPort.Write(BytesOut+"\r");
+                serialEasyPort.Write(BytesOut + "\r");
                 LogSerialMessage(BytesOut, SerialLogEventType.Transmitt);
             }
         }
@@ -118,7 +145,14 @@ namespace MyEasyVeep
 
         private void LogSerialMessage(string Message, SerialLogEventType type)
         {
-            MonitorWindow.LogMessage(new SerialLogEvent(Message,type));
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(() => { LogSerialMessage(Message, type); }));
+            }
+            else
+            {
+                MonitorWindow.LogMessage(new SerialLogEvent(Message, type));
+            }
         }
 
 
@@ -338,6 +372,41 @@ namespace MyEasyVeep
             return IntVal.ToString("X4"); 
         }
 
+        private void SetActuatorValues(int ActuatorValues)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(() => { SetActuatorValues(ActuatorValues); }));
+            }
+            else
+            {
+                int i = 0;
+                foreach (var actuator in movieInfo.Actuators)
+                {
+                    if (actuator == null)
+                        break;
+
+                    var ActVal = (ActuatorValues & (1 << i)) >> i;
+                    actuator.SetActuatorValue(ActVal.ToString());
+                    actuator.SyncActuatorValue();
+
+
+                    i++;
+                }
+            }
+        }
+
+
+
+
+        private void SetupEasyPort()
+        {
+            string command = "RST\rsetup0\r";
+            serialEasyPort.Write(command);
+            LogSerialMessage(command, SerialLogEventType.Transmitt);
+        }
+
+
 
         private void enableAutoModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -356,12 +425,44 @@ namespace MyEasyVeep
 
         private void serialEasyPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            string availableBytes = "";
+            string availableBytes = CurrentCommand;
+
+            //get all the bytes available
             while (serialEasyPort.BytesToRead > 0)
             {
-                availableBytes += serialEasyPort.ReadChar();
+                availableBytes += (char)serialEasyPort.ReadChar();
             }
 
+            string[] commands = availableBytes.Split('\r'); //Split on command end char
+            foreach (string command in commands)
+            {
+                if (command.Equals("setup1"))
+                {
+                    connectionTimeoutTimer.Enabled = false; //We have connected
+                    EasyPortConnected = true;
+                    LogSerialMessage(command, SerialLogEventType.Recieve);
+                } else if (command.Contains("EW="))
+                {
+                    try
+                    {
+                        int lastIndex = command.LastIndexOf("EW=");
+                        string EWCommand = command.Substring(lastIndex, 7);
+
+                        int InputValues = int.Parse(EWCommand.Split('=')[1],System.Globalization.NumberStyles.HexNumber);
+                        SetActuatorValues(InputValues);
+
+                        LogSerialMessage(EWCommand, SerialLogEventType.Recieve);
+                    }
+                    catch
+                    {
+                        LogSerialMessage("Unexpected Error", SerialLogEventType.Administration);
+                    }
+                }
+                else if (command != "" && command.Equals(commands.Last()))
+                {
+                    CurrentCommand = command;
+                }
+            }
         }
     }
 }

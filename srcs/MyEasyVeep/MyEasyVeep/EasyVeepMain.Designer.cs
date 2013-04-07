@@ -39,33 +39,6 @@
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblProcessDesc = new System.Windows.Forms.Label();
             this.groupIOSensors = new System.Windows.Forms.GroupBox();
-            this.groupIOActuators = new System.Windows.Forms.GroupBox();
-            this.inputUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.menuMainEasyVeep = new System.Windows.Forms.MenuStrip();
-            this.myEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serialEasyPort = new System.IO.Ports.SerialPort(this.components);
-            this.actuatorIndicator16 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator15 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator14 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator13 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator12 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator11 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator10 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator9 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator8 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator7 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator6 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator5 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator4 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator3 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator2 = new System.Windows.Forms.PictureBox();
-            this.actuatorIndicator1 = new System.Windows.Forms.PictureBox();
             this.sensorIndicator16 = new System.Windows.Forms.PictureBox();
             this.sensorIndicator4 = new System.Windows.Forms.PictureBox();
             this.sensorIndicator15 = new System.Windows.Forms.PictureBox();
@@ -82,29 +55,39 @@
             this.sensorIndicator7 = new System.Windows.Forms.PictureBox();
             this.sensorIndicator9 = new System.Windows.Forms.PictureBox();
             this.sensorIndicator8 = new System.Windows.Forms.PictureBox();
+            this.groupIOActuators = new System.Windows.Forms.GroupBox();
+            this.actuatorIndicator16 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator15 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator14 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator13 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator12 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator11 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator10 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator9 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator8 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator7 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator6 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator5 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator4 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator3 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator2 = new System.Windows.Forms.PictureBox();
+            this.actuatorIndicator1 = new System.Windows.Forms.PictureBox();
+            this.inputUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.menuMainEasyVeep = new System.Windows.Forms.MenuStrip();
+            this.myEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableAutoModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMyEasyVeepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialEasyPort = new System.IO.Ports.SerialPort(this.components);
+            this.connectionTimeoutTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.gdProcesses.SuspendLayout();
             this.gbModelInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInOutVal)).BeginInit();
             this.groupIOSensors.SuspendLayout();
-            this.groupIOActuators.SuspendLayout();
-            this.menuMainEasyVeep.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator15)).BeginInit();
@@ -121,6 +104,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator8)).BeginInit();
+            this.groupIOActuators.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).BeginInit();
+            this.menuMainEasyVeep.SuspendLayout();
             this.SuspendLayout();
             // 
             // axShockwaveFlash1
@@ -227,278 +228,6 @@
             this.groupIOSensors.TabIndex = 3;
             this.groupIOSensors.TabStop = false;
             this.groupIOSensors.Text = "Sensors";
-            // 
-            // groupIOActuators
-            // 
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator16);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator15);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator14);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator13);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator12);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator11);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator10);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator9);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator8);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator7);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator6);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator5);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator4);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator3);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator2);
-            this.groupIOActuators.Controls.Add(this.actuatorIndicator1);
-            this.groupIOActuators.Location = new System.Drawing.Point(917, 31);
-            this.groupIOActuators.Name = "groupIOActuators";
-            this.groupIOActuators.Size = new System.Drawing.Size(81, 327);
-            this.groupIOActuators.TabIndex = 32;
-            this.groupIOActuators.TabStop = false;
-            this.groupIOActuators.Text = "Actuators";
-            // 
-            // inputUpdateTimer
-            // 
-            this.inputUpdateTimer.Tick += new System.EventHandler(this.inputUpdateTimer_Tick);
-            // 
-            // menuMainEasyVeep
-            // 
-            this.menuMainEasyVeep.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.myEasyVeepToolStripMenuItem,
-            this.configurationToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuMainEasyVeep.Location = new System.Drawing.Point(0, 0);
-            this.menuMainEasyVeep.Name = "menuMainEasyVeep";
-            this.menuMainEasyVeep.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuMainEasyVeep.Size = new System.Drawing.Size(1005, 24);
-            this.menuMainEasyVeep.TabIndex = 33;
-            // 
-            // myEasyVeepToolStripMenuItem
-            // 
-            this.myEasyVeepToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitToolStripMenuItem});
-            this.myEasyVeepToolStripMenuItem.Name = "myEasyVeepToolStripMenuItem";
-            this.myEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.myEasyVeepToolStripMenuItem.Text = "MyEasyVeep";
-            // 
-            // quitToolStripMenuItem
-            // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            // 
-            // configurationToolStripMenuItem
-            // 
-            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serialDeviceToolStripMenuItem,
-            this.enableAutoModeToolStripMenuItem});
-            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.configurationToolStripMenuItem.Text = "Configuration";
-            // 
-            // serialDeviceToolStripMenuItem
-            // 
-            this.serialDeviceToolStripMenuItem.Name = "serialDeviceToolStripMenuItem";
-            this.serialDeviceToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.serialDeviceToolStripMenuItem.Text = "Serial Device";
-            // 
-            // enableAutoModeToolStripMenuItem
-            // 
-            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
-            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
-            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutMyEasyVeepToolStripMenuItem});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // aboutMyEasyVeepToolStripMenuItem
-            // 
-            this.aboutMyEasyVeepToolStripMenuItem.Name = "aboutMyEasyVeepToolStripMenuItem";
-            this.aboutMyEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.aboutMyEasyVeepToolStripMenuItem.Text = "About MyEasyVeep";
-            // 
-            // serialEasyPort
-            // 
-            this.serialEasyPort.BaudRate = 115200;
-            this.serialEasyPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialEasyPort_DataReceived);
-            // 
-            // actuatorIndicator16
-            // 
-            this.actuatorIndicator16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.BackgroundImage")));
-            this.actuatorIndicator16.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.Image")));
-            this.actuatorIndicator16.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.InitialImage")));
-            this.actuatorIndicator16.Location = new System.Drawing.Point(44, 282);
-            this.actuatorIndicator16.Name = "actuatorIndicator16";
-            this.actuatorIndicator16.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator16.TabIndex = 34;
-            this.actuatorIndicator16.TabStop = false;
-            // 
-            // actuatorIndicator15
-            // 
-            this.actuatorIndicator15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.BackgroundImage")));
-            this.actuatorIndicator15.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.Image")));
-            this.actuatorIndicator15.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.InitialImage")));
-            this.actuatorIndicator15.Location = new System.Drawing.Point(44, 244);
-            this.actuatorIndicator15.Name = "actuatorIndicator15";
-            this.actuatorIndicator15.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator15.TabIndex = 33;
-            this.actuatorIndicator15.TabStop = false;
-            // 
-            // actuatorIndicator14
-            // 
-            this.actuatorIndicator14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.BackgroundImage")));
-            this.actuatorIndicator14.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.Image")));
-            this.actuatorIndicator14.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.InitialImage")));
-            this.actuatorIndicator14.Location = new System.Drawing.Point(44, 206);
-            this.actuatorIndicator14.Name = "actuatorIndicator14";
-            this.actuatorIndicator14.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator14.TabIndex = 32;
-            this.actuatorIndicator14.TabStop = false;
-            // 
-            // actuatorIndicator13
-            // 
-            this.actuatorIndicator13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.BackgroundImage")));
-            this.actuatorIndicator13.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.Image")));
-            this.actuatorIndicator13.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.InitialImage")));
-            this.actuatorIndicator13.Location = new System.Drawing.Point(44, 168);
-            this.actuatorIndicator13.Name = "actuatorIndicator13";
-            this.actuatorIndicator13.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator13.TabIndex = 31;
-            this.actuatorIndicator13.TabStop = false;
-            // 
-            // actuatorIndicator12
-            // 
-            this.actuatorIndicator12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.BackgroundImage")));
-            this.actuatorIndicator12.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.Image")));
-            this.actuatorIndicator12.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.InitialImage")));
-            this.actuatorIndicator12.Location = new System.Drawing.Point(44, 130);
-            this.actuatorIndicator12.Name = "actuatorIndicator12";
-            this.actuatorIndicator12.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator12.TabIndex = 30;
-            this.actuatorIndicator12.TabStop = false;
-            // 
-            // actuatorIndicator11
-            // 
-            this.actuatorIndicator11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.BackgroundImage")));
-            this.actuatorIndicator11.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.Image")));
-            this.actuatorIndicator11.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.InitialImage")));
-            this.actuatorIndicator11.Location = new System.Drawing.Point(44, 92);
-            this.actuatorIndicator11.Name = "actuatorIndicator11";
-            this.actuatorIndicator11.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator11.TabIndex = 29;
-            this.actuatorIndicator11.TabStop = false;
-            // 
-            // actuatorIndicator10
-            // 
-            this.actuatorIndicator10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.BackgroundImage")));
-            this.actuatorIndicator10.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.Image")));
-            this.actuatorIndicator10.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.InitialImage")));
-            this.actuatorIndicator10.Location = new System.Drawing.Point(44, 54);
-            this.actuatorIndicator10.Name = "actuatorIndicator10";
-            this.actuatorIndicator10.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator10.TabIndex = 28;
-            this.actuatorIndicator10.TabStop = false;
-            // 
-            // actuatorIndicator9
-            // 
-            this.actuatorIndicator9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.BackgroundImage")));
-            this.actuatorIndicator9.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.Image")));
-            this.actuatorIndicator9.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.InitialImage")));
-            this.actuatorIndicator9.Location = new System.Drawing.Point(44, 16);
-            this.actuatorIndicator9.Name = "actuatorIndicator9";
-            this.actuatorIndicator9.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator9.TabIndex = 27;
-            this.actuatorIndicator9.TabStop = false;
-            // 
-            // actuatorIndicator8
-            // 
-            this.actuatorIndicator8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.BackgroundImage")));
-            this.actuatorIndicator8.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.Image")));
-            this.actuatorIndicator8.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.InitialImage")));
-            this.actuatorIndicator8.Location = new System.Drawing.Point(6, 282);
-            this.actuatorIndicator8.Name = "actuatorIndicator8";
-            this.actuatorIndicator8.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator8.TabIndex = 26;
-            this.actuatorIndicator8.TabStop = false;
-            // 
-            // actuatorIndicator7
-            // 
-            this.actuatorIndicator7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.BackgroundImage")));
-            this.actuatorIndicator7.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.Image")));
-            this.actuatorIndicator7.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.InitialImage")));
-            this.actuatorIndicator7.Location = new System.Drawing.Point(6, 244);
-            this.actuatorIndicator7.Name = "actuatorIndicator7";
-            this.actuatorIndicator7.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator7.TabIndex = 25;
-            this.actuatorIndicator7.TabStop = false;
-            // 
-            // actuatorIndicator6
-            // 
-            this.actuatorIndicator6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.BackgroundImage")));
-            this.actuatorIndicator6.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.Image")));
-            this.actuatorIndicator6.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.InitialImage")));
-            this.actuatorIndicator6.Location = new System.Drawing.Point(6, 206);
-            this.actuatorIndicator6.Name = "actuatorIndicator6";
-            this.actuatorIndicator6.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator6.TabIndex = 24;
-            this.actuatorIndicator6.TabStop = false;
-            // 
-            // actuatorIndicator5
-            // 
-            this.actuatorIndicator5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.BackgroundImage")));
-            this.actuatorIndicator5.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.Image")));
-            this.actuatorIndicator5.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.InitialImage")));
-            this.actuatorIndicator5.Location = new System.Drawing.Point(6, 168);
-            this.actuatorIndicator5.Name = "actuatorIndicator5";
-            this.actuatorIndicator5.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator5.TabIndex = 23;
-            this.actuatorIndicator5.TabStop = false;
-            // 
-            // actuatorIndicator4
-            // 
-            this.actuatorIndicator4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.BackgroundImage")));
-            this.actuatorIndicator4.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.Image")));
-            this.actuatorIndicator4.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.InitialImage")));
-            this.actuatorIndicator4.Location = new System.Drawing.Point(6, 130);
-            this.actuatorIndicator4.Name = "actuatorIndicator4";
-            this.actuatorIndicator4.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator4.TabIndex = 22;
-            this.actuatorIndicator4.TabStop = false;
-            // 
-            // actuatorIndicator3
-            // 
-            this.actuatorIndicator3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.BackgroundImage")));
-            this.actuatorIndicator3.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.Image")));
-            this.actuatorIndicator3.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.InitialImage")));
-            this.actuatorIndicator3.Location = new System.Drawing.Point(6, 92);
-            this.actuatorIndicator3.Name = "actuatorIndicator3";
-            this.actuatorIndicator3.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator3.TabIndex = 21;
-            this.actuatorIndicator3.TabStop = false;
-            // 
-            // actuatorIndicator2
-            // 
-            this.actuatorIndicator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.BackgroundImage")));
-            this.actuatorIndicator2.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.Image")));
-            this.actuatorIndicator2.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.InitialImage")));
-            this.actuatorIndicator2.Location = new System.Drawing.Point(6, 54);
-            this.actuatorIndicator2.Name = "actuatorIndicator2";
-            this.actuatorIndicator2.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator2.TabIndex = 20;
-            this.actuatorIndicator2.TabStop = false;
-            // 
-            // actuatorIndicator1
-            // 
-            this.actuatorIndicator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.BackgroundImage")));
-            this.actuatorIndicator1.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.Image")));
-            this.actuatorIndicator1.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.InitialImage")));
-            this.actuatorIndicator1.Location = new System.Drawing.Point(6, 16);
-            this.actuatorIndicator1.Name = "actuatorIndicator1";
-            this.actuatorIndicator1.Size = new System.Drawing.Size(32, 32);
-            this.actuatorIndicator1.TabIndex = 19;
-            this.actuatorIndicator1.TabStop = false;
             // 
             // sensorIndicator16
             // 
@@ -676,6 +405,282 @@
             this.sensorIndicator8.TabIndex = 42;
             this.sensorIndicator8.TabStop = false;
             // 
+            // groupIOActuators
+            // 
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator16);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator15);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator14);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator13);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator12);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator11);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator10);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator9);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator8);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator7);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator6);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator5);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator4);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator3);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator2);
+            this.groupIOActuators.Controls.Add(this.actuatorIndicator1);
+            this.groupIOActuators.Location = new System.Drawing.Point(917, 31);
+            this.groupIOActuators.Name = "groupIOActuators";
+            this.groupIOActuators.Size = new System.Drawing.Size(81, 327);
+            this.groupIOActuators.TabIndex = 32;
+            this.groupIOActuators.TabStop = false;
+            this.groupIOActuators.Text = "Actuators";
+            // 
+            // actuatorIndicator16
+            // 
+            this.actuatorIndicator16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.BackgroundImage")));
+            this.actuatorIndicator16.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.Image")));
+            this.actuatorIndicator16.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator16.InitialImage")));
+            this.actuatorIndicator16.Location = new System.Drawing.Point(44, 282);
+            this.actuatorIndicator16.Name = "actuatorIndicator16";
+            this.actuatorIndicator16.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator16.TabIndex = 34;
+            this.actuatorIndicator16.TabStop = false;
+            // 
+            // actuatorIndicator15
+            // 
+            this.actuatorIndicator15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.BackgroundImage")));
+            this.actuatorIndicator15.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.Image")));
+            this.actuatorIndicator15.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator15.InitialImage")));
+            this.actuatorIndicator15.Location = new System.Drawing.Point(44, 244);
+            this.actuatorIndicator15.Name = "actuatorIndicator15";
+            this.actuatorIndicator15.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator15.TabIndex = 33;
+            this.actuatorIndicator15.TabStop = false;
+            // 
+            // actuatorIndicator14
+            // 
+            this.actuatorIndicator14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.BackgroundImage")));
+            this.actuatorIndicator14.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.Image")));
+            this.actuatorIndicator14.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator14.InitialImage")));
+            this.actuatorIndicator14.Location = new System.Drawing.Point(44, 206);
+            this.actuatorIndicator14.Name = "actuatorIndicator14";
+            this.actuatorIndicator14.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator14.TabIndex = 32;
+            this.actuatorIndicator14.TabStop = false;
+            // 
+            // actuatorIndicator13
+            // 
+            this.actuatorIndicator13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.BackgroundImage")));
+            this.actuatorIndicator13.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.Image")));
+            this.actuatorIndicator13.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator13.InitialImage")));
+            this.actuatorIndicator13.Location = new System.Drawing.Point(44, 168);
+            this.actuatorIndicator13.Name = "actuatorIndicator13";
+            this.actuatorIndicator13.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator13.TabIndex = 31;
+            this.actuatorIndicator13.TabStop = false;
+            // 
+            // actuatorIndicator12
+            // 
+            this.actuatorIndicator12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.BackgroundImage")));
+            this.actuatorIndicator12.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.Image")));
+            this.actuatorIndicator12.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator12.InitialImage")));
+            this.actuatorIndicator12.Location = new System.Drawing.Point(44, 130);
+            this.actuatorIndicator12.Name = "actuatorIndicator12";
+            this.actuatorIndicator12.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator12.TabIndex = 30;
+            this.actuatorIndicator12.TabStop = false;
+            // 
+            // actuatorIndicator11
+            // 
+            this.actuatorIndicator11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.BackgroundImage")));
+            this.actuatorIndicator11.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.Image")));
+            this.actuatorIndicator11.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator11.InitialImage")));
+            this.actuatorIndicator11.Location = new System.Drawing.Point(44, 92);
+            this.actuatorIndicator11.Name = "actuatorIndicator11";
+            this.actuatorIndicator11.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator11.TabIndex = 29;
+            this.actuatorIndicator11.TabStop = false;
+            // 
+            // actuatorIndicator10
+            // 
+            this.actuatorIndicator10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.BackgroundImage")));
+            this.actuatorIndicator10.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.Image")));
+            this.actuatorIndicator10.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator10.InitialImage")));
+            this.actuatorIndicator10.Location = new System.Drawing.Point(44, 54);
+            this.actuatorIndicator10.Name = "actuatorIndicator10";
+            this.actuatorIndicator10.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator10.TabIndex = 28;
+            this.actuatorIndicator10.TabStop = false;
+            // 
+            // actuatorIndicator9
+            // 
+            this.actuatorIndicator9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.BackgroundImage")));
+            this.actuatorIndicator9.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.Image")));
+            this.actuatorIndicator9.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator9.InitialImage")));
+            this.actuatorIndicator9.Location = new System.Drawing.Point(44, 16);
+            this.actuatorIndicator9.Name = "actuatorIndicator9";
+            this.actuatorIndicator9.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator9.TabIndex = 27;
+            this.actuatorIndicator9.TabStop = false;
+            // 
+            // actuatorIndicator8
+            // 
+            this.actuatorIndicator8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.BackgroundImage")));
+            this.actuatorIndicator8.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.Image")));
+            this.actuatorIndicator8.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator8.InitialImage")));
+            this.actuatorIndicator8.Location = new System.Drawing.Point(6, 282);
+            this.actuatorIndicator8.Name = "actuatorIndicator8";
+            this.actuatorIndicator8.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator8.TabIndex = 26;
+            this.actuatorIndicator8.TabStop = false;
+            // 
+            // actuatorIndicator7
+            // 
+            this.actuatorIndicator7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.BackgroundImage")));
+            this.actuatorIndicator7.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.Image")));
+            this.actuatorIndicator7.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator7.InitialImage")));
+            this.actuatorIndicator7.Location = new System.Drawing.Point(6, 244);
+            this.actuatorIndicator7.Name = "actuatorIndicator7";
+            this.actuatorIndicator7.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator7.TabIndex = 25;
+            this.actuatorIndicator7.TabStop = false;
+            // 
+            // actuatorIndicator6
+            // 
+            this.actuatorIndicator6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.BackgroundImage")));
+            this.actuatorIndicator6.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.Image")));
+            this.actuatorIndicator6.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator6.InitialImage")));
+            this.actuatorIndicator6.Location = new System.Drawing.Point(6, 206);
+            this.actuatorIndicator6.Name = "actuatorIndicator6";
+            this.actuatorIndicator6.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator6.TabIndex = 24;
+            this.actuatorIndicator6.TabStop = false;
+            // 
+            // actuatorIndicator5
+            // 
+            this.actuatorIndicator5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.BackgroundImage")));
+            this.actuatorIndicator5.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.Image")));
+            this.actuatorIndicator5.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator5.InitialImage")));
+            this.actuatorIndicator5.Location = new System.Drawing.Point(6, 168);
+            this.actuatorIndicator5.Name = "actuatorIndicator5";
+            this.actuatorIndicator5.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator5.TabIndex = 23;
+            this.actuatorIndicator5.TabStop = false;
+            // 
+            // actuatorIndicator4
+            // 
+            this.actuatorIndicator4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.BackgroundImage")));
+            this.actuatorIndicator4.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.Image")));
+            this.actuatorIndicator4.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator4.InitialImage")));
+            this.actuatorIndicator4.Location = new System.Drawing.Point(6, 130);
+            this.actuatorIndicator4.Name = "actuatorIndicator4";
+            this.actuatorIndicator4.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator4.TabIndex = 22;
+            this.actuatorIndicator4.TabStop = false;
+            // 
+            // actuatorIndicator3
+            // 
+            this.actuatorIndicator3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.BackgroundImage")));
+            this.actuatorIndicator3.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.Image")));
+            this.actuatorIndicator3.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator3.InitialImage")));
+            this.actuatorIndicator3.Location = new System.Drawing.Point(6, 92);
+            this.actuatorIndicator3.Name = "actuatorIndicator3";
+            this.actuatorIndicator3.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator3.TabIndex = 21;
+            this.actuatorIndicator3.TabStop = false;
+            // 
+            // actuatorIndicator2
+            // 
+            this.actuatorIndicator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.BackgroundImage")));
+            this.actuatorIndicator2.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.Image")));
+            this.actuatorIndicator2.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator2.InitialImage")));
+            this.actuatorIndicator2.Location = new System.Drawing.Point(6, 54);
+            this.actuatorIndicator2.Name = "actuatorIndicator2";
+            this.actuatorIndicator2.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator2.TabIndex = 20;
+            this.actuatorIndicator2.TabStop = false;
+            // 
+            // actuatorIndicator1
+            // 
+            this.actuatorIndicator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.BackgroundImage")));
+            this.actuatorIndicator1.Image = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.Image")));
+            this.actuatorIndicator1.InitialImage = ((System.Drawing.Image)(resources.GetObject("actuatorIndicator1.InitialImage")));
+            this.actuatorIndicator1.Location = new System.Drawing.Point(6, 16);
+            this.actuatorIndicator1.Name = "actuatorIndicator1";
+            this.actuatorIndicator1.Size = new System.Drawing.Size(32, 32);
+            this.actuatorIndicator1.TabIndex = 19;
+            this.actuatorIndicator1.TabStop = false;
+            // 
+            // inputUpdateTimer
+            // 
+            this.inputUpdateTimer.Tick += new System.EventHandler(this.inputUpdateTimer_Tick);
+            // 
+            // menuMainEasyVeep
+            // 
+            this.menuMainEasyVeep.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myEasyVeepToolStripMenuItem,
+            this.configurationToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuMainEasyVeep.Location = new System.Drawing.Point(0, 0);
+            this.menuMainEasyVeep.Name = "menuMainEasyVeep";
+            this.menuMainEasyVeep.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuMainEasyVeep.Size = new System.Drawing.Size(1005, 24);
+            this.menuMainEasyVeep.TabIndex = 33;
+            // 
+            // myEasyVeepToolStripMenuItem
+            // 
+            this.myEasyVeepToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.myEasyVeepToolStripMenuItem.Name = "myEasyVeepToolStripMenuItem";
+            this.myEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.myEasyVeepToolStripMenuItem.Text = "MyEasyVeep";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serialDeviceToolStripMenuItem,
+            this.enableAutoModeToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            // 
+            // serialDeviceToolStripMenuItem
+            // 
+            this.serialDeviceToolStripMenuItem.Name = "serialDeviceToolStripMenuItem";
+            this.serialDeviceToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.serialDeviceToolStripMenuItem.Text = "Serial Device";
+            // 
+            // enableAutoModeToolStripMenuItem
+            // 
+            this.enableAutoModeToolStripMenuItem.Name = "enableAutoModeToolStripMenuItem";
+            this.enableAutoModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.enableAutoModeToolStripMenuItem.Text = "Enable Auto Mode";
+            this.enableAutoModeToolStripMenuItem.Click += new System.EventHandler(this.enableAutoModeToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMyEasyVeepToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // aboutMyEasyVeepToolStripMenuItem
+            // 
+            this.aboutMyEasyVeepToolStripMenuItem.Name = "aboutMyEasyVeepToolStripMenuItem";
+            this.aboutMyEasyVeepToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.aboutMyEasyVeepToolStripMenuItem.Text = "About MyEasyVeep";
+            // 
+            // serialEasyPort
+            // 
+            this.serialEasyPort.BaudRate = 115200;
+            this.serialEasyPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialEasyPort_DataReceived);
+            // 
+            // connectionTimeoutTimer
+            // 
+            this.connectionTimeoutTimer.Interval = 500;
+            // 
             // EasyVeepMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -698,25 +703,6 @@
             this.gbModelInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInOutVal)).EndInit();
             this.groupIOSensors.ResumeLayout(false);
-            this.groupIOActuators.ResumeLayout(false);
-            this.menuMainEasyVeep.ResumeLayout(false);
-            this.menuMainEasyVeep.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator15)).EndInit();
@@ -733,6 +719,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sensorIndicator8)).EndInit();
+            this.groupIOActuators.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actuatorIndicator1)).EndInit();
+            this.menuMainEasyVeep.ResumeLayout(false);
+            this.menuMainEasyVeep.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -792,6 +797,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutMyEasyVeepToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableAutoModeToolStripMenuItem;
         private System.IO.Ports.SerialPort serialEasyPort;
+        private System.Windows.Forms.Timer connectionTimeoutTimer;
     }
 }
 
