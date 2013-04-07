@@ -16,10 +16,15 @@
 // Defines and Macros
 //////////////////////////////////////////
 #define SYS_MILLIS 13333 //3 Cycles Per Loop. @40Mhz that's ~13,333 per ms!
+#define MAX_COMMAND_LEN 16
 
 //
 // Global Variables
 /////////////////////////////////////////
+char command[MAX_COMMAND_LEN];
+volatile short commandIndex;
+volatile short testvalue;
+volatile short currentOutputs;
 
 //
 // Functions
@@ -28,9 +33,83 @@ void initPeripherals();
 unsigned short GetActuators();
 void SetSensors(unsigned short SensorValue);
 
+//
+// Really not like normal strcmp
+////////////////////////////////////
+int strcmp(char* str1, char* str2){
+	while ( *str1 && *str2 ){
+
+		if ( *str1 != *str2){
+			return 0;
+		}
+
+		str1++; str2++;
+	}
+
+	return 1;
+}
+
+
 void UARTSend(char* cBuffer, unsigned long ulCount){
 	while(ulCount--){
 		UARTCharPutNonBlocking(UART0_BASE, *cBuffer++);
+	}
+}
+
+void SendInputValues(short inputValue){
+	char hexdisp[4];
+
+	hexdisp[0] = (char)((inputValue & 0xF000) >> 12) + '0';
+	hexdisp[1] = (char)((inputValue & 0x0F00) >> 8) + '0';
+	hexdisp[2] = (char)((inputValue & 0x00F0) >> 4) + '0';
+	hexdisp[3] = (char)((inputValue & 0x000F) ) + '0';
+
+	hexdisp[0] += hexdisp[0] > '9' ? 7 : 0;
+	hexdisp[1] += hexdisp[1] > '9' ? 7 : 0;
+	hexdisp[2] += hexdisp[2] > '9' ? 7 : 0;
+	hexdisp[3] += hexdisp[3] > '9' ? 7 : 0;
+
+	UARTSend("EW=",3);
+	UARTSend(hexdisp,4);
+	UARTSend("\r",1);
+}
+
+short parseHexWord(char *hex){
+	return (short)
+		(
+			(hex[0] > '9' ? hex[0] - '0' - 7 : hex[0] - '0') * 4096 +
+			(hex[1] > '9' ? hex[1] - '0' - 7 : hex[1] - '0') * 256  +
+			(hex[2] > '9' ? hex[2] - '0' - 7 : hex[2] - '0') * 16 +
+			(hex[3] > '9' ? hex[3] - '0' - 7 : hex[3] - '0')
+		);
+}
+
+void ParseCommand(char *command){
+	if ( strcmp(command,"setup0") ){
+		UARTSend("setup1\r",7); //Respond to the setup
+		TimerEnable(TIMER0_BASE, TIMER_A);
+	} else if ( strcmp(command,"MAW=") ) {
+		//Update the output values
+		short newOutputs = parseHexWord(command+4);
+		SetSensors(newOutputs);
+	} else if ( strcmp(command, "RST")){
+		TimerDisable(TIMER0_BASE, TIMER_A);
+		testvalue = 0;
+	}
+}
+
+
+void UARTRead(){
+	char c;
+	while (UARTCharsAvail(UART0_BASE)){
+		c = UARTCharGetNonBlocking(UART0_BASE);
+		if ( c == '\r'){
+			command[commandIndex++] = '\0';
+			commandIndex = 0;
+			ParseCommand(command);
+		} else {
+			command[commandIndex++] = c;
+		}
 	}
 }
 
@@ -46,21 +125,23 @@ void __error__(char *pcFilename, unsigned long ulLine)
 ////////////////////////////////////////
 void main(void){
 
-	unsigned short testval = 0;
+	//unsigned short testval = 0;
 
 	initPeripherals();
 
 	while(1){
-		//UARTSend("Hello WORLD!\r\n",14);
-		//unsigned short test = GetActuators();
-		SetSensors(testval);
-		SysCtlDelay(5*SYS_MILLIS);
-		testval ++;
+		UARTRead();
 	}
+}
+
+void Timer0IntHandler(void){
+	TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+	SendInputValues(GetActuators());
 }
 
 
 unsigned short GetActuators(){
+
 	// 15-8:	PB5 PD0 PD1 PD2		PD3 PE1 PE2 PE3
 	// 7-0: 	PB0 PB1 PE4 PE5	 	PB4 PA5 PA6 PA7
 
@@ -142,6 +223,15 @@ void initPeripherals(){
 	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 
 	//
+	// Configure a timer
+	////////////////////////////////////////
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+	TimerConfigure(TIMER0_BASE,TIMER_CFG_32_BIT_PER);
+	TimerLoadSet(TIMER0_BASE, TIMER_A, (SysCtlClockGet()/15) - 1 );
+
+
+
+	//
 	// Enable GPIO Clocks we will be using (A-E)
 	////////////////////////////////////////////
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
@@ -211,11 +301,11 @@ void initPeripherals(){
 			(UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
 
 	//
-	// Enable Serial Interrupts (and in startup_css.c)
-	/////////////////////////////////////////
+	// Prepare the timer interrupt
+	////////////////////////////////////////
 	IntMasterEnable();
-	IntEnable(INT_UART0);
-	UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+	IntEnable(INT_TIMER0A);
+	TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
 }
 
