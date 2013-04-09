@@ -38,7 +38,11 @@ namespace MyEasyVeep.ProcessModels
             do
             {
                 //I'm not much for Hungarian, but this means English Program Description
-                ProcessDescriptionLine = Movie.GetVariable(String.Format("EprgLeiras{0}", ProcessDescriptionIndex > 0 ? ProcessDescriptionIndex.ToString() : ""));
+                try
+                {
+                    ProcessDescriptionLine = Movie.GetVariable(String.Format("EprgLeiras{0}", ProcessDescriptionIndex > 0 ? ProcessDescriptionIndex.ToString() : ""));
+                }
+                catch { }
                 ProcessDescription += " " + ProcessDescriptionLine;
                 ProcessDescriptionIndex++;
 
