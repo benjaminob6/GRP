@@ -142,74 +142,86 @@ void Timer0IntHandler(void){
 
 unsigned short GetActuators(){
 
-	// 15-8:	PB5 PD0 PD1 PD2		PD3 PE1 PE2 PE3
-	// 7-0: 	PB0 PB1 PE4 PE5	 	PB4 PA5 PA6 PA7
+	// 15	14		13		12		11		10		9		8		7		6		5		4		3		2		1		0
+	//C3-7	C3-6	C3-5	C3-4	C3-3	C3-2	C3-1	C3-0	C1-7	C1-6	C1-5	C1-4	C1-3	C1-2	C1-1	C1-0
+	//PC7	PA6		PD6		PA7		PC6		PB4		PC5		PA5		PC4		PE4		PB3		PE5		PF3		PB0		PF2		PB1
+	//
+	// Ports: A, C, D, B, F
+	// Port A: 7 6 5
+	// Port B: 4 3 1 0
+	// Port C: 7 6 5 4
+	// Port D: 6
+	// Port E: 5 4
+	// Port F: 3 2
 
 	unsigned short PortA = GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_7 | GPIO_PIN_6 | GPIO_PIN_5);
-	unsigned short PortB = GPIOPinRead(GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_1 | GPIO_PIN_0);
-	unsigned short PortD = GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0);
-	unsigned short PortE = GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4 |GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 );
+	unsigned short PortB = GPIOPinRead(GPIO_PORTB_BASE, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_1 | GPIO_PIN_0);
+	unsigned short PortC = GPIOPinRead(GPIO_PORTC_BASE, GPIO_PIN_7 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_4);
+	unsigned short PortD = GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_6);
+	unsigned short PortE = GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4);
+	unsigned short PortF = GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_3 | GPIO_PIN_2);
 
-	unsigned short ActuatorValues = (PortB & GPIO_PIN_5) << (15-5) |
-									(PortD & GPIO_PIN_0) << (14-0) |
-									(PortD & GPIO_PIN_1) << (13-1) |
-									(PortD & GPIO_PIN_2) << (12-2) |
-									(PortD & GPIO_PIN_3) << (11-3) |
-									(PortE & GPIO_PIN_1) << (10-1) |
-									(PortE & GPIO_PIN_2) << (9-2) |
-									(PortE & GPIO_PIN_3) << (8-3) |
-									(PortB & GPIO_PIN_0) << (7-0) |
-									(PortB & GPIO_PIN_1) << (6-1) |
-									(PortE & GPIO_PIN_4) << (5-4) |
+	unsigned short ActuatorValues = (PortC & GPIO_PIN_7) << (15-7) |
+									(PortA & GPIO_PIN_6) << (14-6) |
+									(PortD & GPIO_PIN_6) << (13-6) |
+									(PortA & GPIO_PIN_7) << (12-7) |
+									(PortC & GPIO_PIN_6) << (11-6) |
+									(PortB & GPIO_PIN_4) << (10-4) |
+									(PortC & GPIO_PIN_5) << (9-5) |
+									(PortA & GPIO_PIN_5) << (8-5) |
+									(PortC & GPIO_PIN_4) << (7-4) |
+									(PortE & GPIO_PIN_4) << (6-4) |
+									(PortB & GPIO_PIN_3) << (5-3) |
 									(PortE & GPIO_PIN_5) >> (5-4) |
-									(PortB & GPIO_PIN_4) >> (4-3) |
-									(PortA & GPIO_PIN_5) >> (5-2) |
-									(PortA & GPIO_PIN_6) >> (6-1) |
-									(PortA & GPIO_PIN_7) >> (7-0);
+									(PortF & GPIO_PIN_3) >> (3-3) |
+									(PortB & GPIO_PIN_0) << (2-0) |
+									(PortF & GPIO_PIN_2) >> (2-1) |
+									(PortB & GPIO_PIN_1) >> (1-0);
 
 	return ActuatorValues;
 }
 
 void SetSensors(unsigned short SensorValue){
-	// 15-8: 	PB3 PC4 PC5 PC6  	PC7 PD6 PD7 PF4
-	// 7-0: 	PF2 PF3 PB2 PB7   	PB6 PA4 PA3 PA2
 
-	unsigned char PortABits = (SensorValue & (1 << 2)) << 2 | /* bit 2 to bit 4 */
-							  (SensorValue & (1 << 1)) << 2 | /* bit 1 to bit 3 */
-							  (SensorValue & (1 << 0)) << 2 ; /* bit 0 to bit 2 */
-
-	unsigned char PortBBits = (SensorValue & (1 << 15)) >> 12 | /* bit 15 to bit 3*/
-							  (SensorValue & (1 <<  5)) >> 3 | /* bit 5 to bit 2 */
-							  (SensorValue & (1 <<  4)) << 3 | /* bit 4 to bit 7 */
-							  (SensorValue & (1 <<  3)) << 3 ; /* bit 3 to bit 6 */
-
-	unsigned char PortCBits = (SensorValue & (1 << 14)) >> 10 | /* bit 14 to bit 4 */
-							  (SensorValue & (1 << 13)) >> 8 | /* bit 13 to bit 5 */
-							  (SensorValue & (1 << 12)) >> 6 | /* bit 12 to bit 6 */
-							  (SensorValue & (1 << 11)) >> 4 ; /* bit 11 to bit 7 */
-
-	unsigned char PortDBits = (SensorValue & (1 << 10)) >> 4 | /* bit 10 to bit 6 */
-							  (SensorValue & (1 << 9)) >> 2 ; /* bit 9 to bit 7 */
-
-	unsigned char PortFBits = (SensorValue & (1 << 8)) >> 4 | /* bit 8 to bit 4 */
-							  (SensorValue & (1 << 7)) >> 5 | /* bit 7 to bit 2 */
-							  (SensorValue & (1 << 6)) >> 3 ; /* bit 6 to bit 3 */
+	// 15	14		13		12		11		10		9		8		7		6		5		4		3		2		1		0
+	//C2-7	C2-6	C2-5	C2-4	C2-3	C2-2	C2-1	C2-0	C0-7	C0-6	C0-5	C0-4	C0-3	C0-2	C0-1	C0-0
+	//PE3	PD7		PF1		PF4		PE1		PA2		PE2		PA3		PD2		PA4		PD3		PB6		PD0		PB7		PD1		PB2
+	//
+	// Port: A, B, D, E, F
+	// Port A: 4 3 2
+	// Port B: 7 6 2
+	// Port D: 7 3 2 1 0
+	// Port E: 1 3 2
+	// Port F: 4 1
 
 
-    GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
+	unsigned char PortABits = (SensorValue & (1 << 6)) >> 2 | /* bit 6 to bit A4 */
+							  (SensorValue & (1 << 8)) >> 5 | /* bit 8 to bit A3 */
+							  (SensorValue & (1 << 10)) >> 8 ; /* bit 10 to bit A2 */
+
+	unsigned char PortBBits = (SensorValue & (1 << 4)) << 2 |  /* bit 4 to bit B6*/
+							  (SensorValue & (1 << 2)) << 5 | /* bit 2 to bit B7 */
+							  (SensorValue & (1 << 0)) << 2 ; /* bit 0 to bit B2 */
+
+	unsigned char PortDBits = (SensorValue & (1 << 14)) >> 7 | /* bit 14 to bit D7 */
+							  (SensorValue & (1 <<  7)) >> 5 | /* bit 7 to bit D2 */
+							  (SensorValue & (1 << 5)) >> 2  | /* bit 5 to bit D3 */
+							  (SensorValue & (1 << 1)) >> 0  | /* bit 1 to bit D1 */
+							  (SensorValue & (1 << 3)) >> 3 ; /* bit 3 to bit D0 */
+
+	unsigned char PortEBits = (SensorValue & (1 << 15)) >> 12 | /* bit 15 to bit E3 */
+							  (SensorValue & (1 << 9)) >> 7 | /* bit 9 to bit E2 */
+							  (SensorValue & (1 << 11)) >> 10 ; /* bit 11 to bit E1 */
+
+	unsigned char PortFBits = (SensorValue & (1 << 13)) >> 12 | /* bit 13 to bit F1 */
+							  (SensorValue & (1 << 12)) >> 8 ; /* bit 12 to bit F4 */
+
+
     GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, PortABits);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7, PortBBits);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7, PortCBits);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7, PortDBits);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, PortFBits);
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_7, PortDBits);
+    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_6 | GPIO_PIN_7, PortBBits);
+    GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_2 |GPIO_PIN_3, PortEBits);
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_4, PortFBits);
 }
 
 //
@@ -241,49 +253,57 @@ void initPeripherals(){
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 
-	//
-	// Inputs are on the Left side of the Stellaris Board
-	// Outputs are on the Right side. They are grouped as follows
-	//
-	// INPUTS (Actuators)
-	// 7-0: PB0 PB1 PE4 PE5 PB4 PA5 PA6 PA7
-	// 15-8: PB5 PD0 PD1 PD2 PD3 PE1 PE2 PE3
-	//
-	//
-	// Outputs (Sensors)
-	// 7-0: PF2 PF3 PB2 PB7 PB6 PA4 PA3 PA2
-	// 15-8: PB3 PC4 PC5 PC6 PC7 PD6 PD7 PF4
-	///////////////////////////////////////////////////////////
-
-	//
-	// Setup I/O pins
-	///////////////////////////////////////////
-    GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7);
-    GPIOPinTypeGPIOInput(GPIO_PORTB_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4 | GPIO_PIN_5);
-    GPIOPinTypeGPIOInput(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
-    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
-
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
-    GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_7, 0);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_7, 0);
-
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
-
+	// Inputs
+	// Ports: A, C, D, B, F
+	// Port A: 7 6 5
+	// Port B: 4 3 1 0
+	// Port C: 7 6 5 4
+	// Port D: 6
+	// Port E: 5 4
+	// Port F: 3 2
 
     // PinMux spit this out for me. I'll just trust it for now
     // First open the lock and select the bits we want to modify in the GPIO commit register.
     HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY_DD;
     HWREG(GPIO_PORTD_BASE + GPIO_O_CR) = 0x80;
 
-    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7);
-    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_6 | GPIO_PIN_7, 0);
+	//
+	// Setup I/O pins
+	///////////////////////////////////////////
+    GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7);
+    GPIOPinTypeGPIOInput(GPIO_PORTB_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_3 | GPIO_PIN_4);
+    GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_7 | GPIO_PIN_6 | GPIO_PIN_5 | GPIO_PIN_4);
+    GPIOPinTypeGPIOInput(GPIO_PORTD_BASE, GPIO_PIN_6 );
+    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4);
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_3 | GPIO_PIN_2);
+
+
+    // Outputs
+	// Port: A, B, D, E, F
+	// Port A: 4 3 2
+	// Port B: 7 6 2
+	// Port D: 7 3 2 1 0
+	// Port E: 1 3 2
+	// Port F: 4 1
+    GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4);
+    GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4, 0);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_6 | GPIO_PIN_7);
+    //GPIOPadConfigSet(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_6 | GPIO_PIN_7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPD);
+    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_2 | GPIO_PIN_6 | GPIO_PIN_7, 0);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, /*GPIO_PIN_0 |*/ GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_7);
+    //GPIOPadConfigSet(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_7, GPIO_STRENGTH_8MA ,GPIO_PIN_TYPE_STD_WPD);
+    GPIOPinWrite(GPIO_PORTD_BASE,/*GPIO_PIN_0 |*/ GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_7, 0);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_3 | GPIO_PIN_2);
+    GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_2  | GPIO_PIN_3, 0);
+
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_4);
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_4, 0);
+
+
+
 
 
 	//
