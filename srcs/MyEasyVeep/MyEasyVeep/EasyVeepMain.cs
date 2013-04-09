@@ -451,7 +451,7 @@ namespace MyEasyVeep
                         int InputValues = int.Parse(EWCommand.Split('=')[1],System.Globalization.NumberStyles.HexNumber);
                         SetActuatorValues(InputValues);
 
-                   //     LogSerialMessage(EWCommand, SerialLogEventType.Recieve);
+                        LogSerialMessage(EWCommand, SerialLogEventType.Recieve);
                     }
                     catch
                     {
