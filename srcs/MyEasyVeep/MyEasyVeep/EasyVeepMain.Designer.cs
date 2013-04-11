@@ -608,6 +608,7 @@
             // 
             // inputUpdateTimer
             // 
+            this.inputUpdateTimer.Interval = 33;
             this.inputUpdateTimer.Tick += new System.EventHandler(this.inputUpdateTimer_Tick);
             // 
             // menuMainEasyVeep
