@@ -255,7 +255,6 @@ namespace MyEasyVeep
 
             UpdateProcessInfoDisplay(GetProcessInfo());
 
-
             //Spool up the timer
             inputUpdateTimer.Enabled = true;
             inputUpdateTimer.Start();

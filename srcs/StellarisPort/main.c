@@ -24,7 +24,8 @@
 char command[MAX_COMMAND_LEN];
 volatile short commandIndex;
 volatile short testvalue;
-volatile short currentOutputs;
+volatile short lastActuators;
+volatile short ticksSinceLastUpdate;
 
 //
 // Functions
@@ -125,8 +126,6 @@ void __error__(char *pcFilename, unsigned long ulLine)
 ////////////////////////////////////////
 void main(void){
 
-	//unsigned short testval = 0;
-
 	initPeripherals();
 
 	while(1){
@@ -136,7 +135,17 @@ void main(void){
 
 void Timer0IntHandler(void){
 	TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
-	SendInputValues(GetActuators());
+
+	ticksSinceLastUpdate++;
+
+	short newActutors = GetActuators();
+	if ( newActutors != lastActuators || ticksSinceLastUpdate > 15){
+		SendInputValues(newActutors);
+		ticksSinceLastUpdate=0;
+	}
+
+	lastActuators = newActutors;
+
 }
 
 
@@ -239,7 +248,7 @@ void initPeripherals(){
 	////////////////////////////////////////
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
 	TimerConfigure(TIMER0_BASE,TIMER_CFG_32_BIT_PER);
-	TimerLoadSet(TIMER0_BASE, TIMER_A, (SysCtlClockGet()/15) - 1 );
+	TimerLoadSet(TIMER0_BASE, TIMER_A, (SysCtlClockGet()/30) - 1 );
 
 
 
