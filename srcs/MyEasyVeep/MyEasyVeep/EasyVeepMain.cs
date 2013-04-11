@@ -280,6 +280,11 @@ namespace MyEasyVeep
                     ActuatorIndicators[i - 1].Image = Resources.Indicator_Disabled;
                     ActuatorIndicators[i - 1].Enabled = false;
                 }
+                else
+                {
+                    ActuatorIndicators[i - 1].Image = Resources.Actuator_Off;
+                    ActuatorIndicators[i - 1].Enabled = true;
+                }
             }
 
             dataGridInOutVal.DataSource = InOutData;
