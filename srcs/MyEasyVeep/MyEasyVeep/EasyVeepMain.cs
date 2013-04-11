@@ -272,7 +272,12 @@ namespace MyEasyVeep
 
             for (int i = 1; i <= 16; i++)
             {
-                InOutData.Rows.Add(i, (Info.Sensors[i-1] != null ? Info.Sensors[i-1].SensorRole : "" ), ( Info.Actuators[i-1] != null ? Info.Actuators[i-1].ActuatorRole : ""));
+                //Add the items to the datagrid view
+                InOutData.Rows.Add(
+                        String.Format("{0} - 0x{1}",i-1,(1 << (i-1)).ToString("X4")),
+                        (Info.Sensors[i-1] != null ? Info.Sensors[i-1].SensorRole : "" ),
+                        ( Info.Actuators[i-1] != null ? Info.Actuators[i-1].ActuatorRole : "")
+                        );
 
                 SensorIndicators[i - 1].Image = Info.Sensors[i - 1] != null ? Resources.Sensor_Off : Resources.Indicator_Disabled;
                 if (Info.Actuators[i - 1] == null)
@@ -284,6 +289,7 @@ namespace MyEasyVeep
 
             dataGridInOutVal.DataSource = InOutData;
             dataGridInOutVal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridInOutVal.Columns[0].Width = 64;
         }
 
         private ProcessInfo GetProcessInfo()
