@@ -2283,12 +2283,22 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="203.2" y1="-53.34" x2="185.42" y2="-53.34" width="0.1524" layer="91"/>
 <label x="193.04" y="-53.34" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$8" gate="G$1" pin="B1"/>
+<wire x1="236.22" y1="106.68" x2="220.98" y2="106.68" width="0.1524" layer="91"/>
+<label x="223.52" y="106.68" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PB0" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="16"/>
 <wire x1="203.2" y1="-55.88" x2="185.42" y2="-55.88" width="0.1524" layer="91"/>
 <label x="193.04" y="-55.88" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$8" gate="G$1" pin="B2"/>
+<wire x1="236.22" y1="104.14" x2="220.98" y2="104.14" width="0.1524" layer="91"/>
+<label x="223.52" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND2" class="0">

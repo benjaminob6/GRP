@@ -2227,12 +2227,22 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="152.4" y1="-53.34" x2="177.8" y2="-53.34" width="0.1524" layer="91"/>
 <label x="160.02" y="-53.34" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$8" gate="G$1" pin="B3"/>
+<wire x1="236.22" y1="101.6" x2="220.98" y2="101.6" width="0.1524" layer="91"/>
+<label x="223.52" y="101.6" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PD0" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="15"/>
 <wire x1="152.4" y1="-55.88" x2="177.8" y2="-55.88" width="0.1524" layer="91"/>
 <label x="160.02" y="-55.88" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$8" gate="G$1" pin="B4"/>
+<wire x1="236.22" y1="99.06" x2="220.98" y2="99.06" width="0.1524" layer="91"/>
+<label x="223.52" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PA7" class="0">

@@ -2199,12 +2199,21 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="152.4" y1="-43.18" x2="177.8" y2="-43.18" width="0.1524" layer="91"/>
 <label x="160.02" y="-43.18" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="B3"/>
+<wire x1="236.22" y1="38.1" x2="236.22" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="40.64" x2="220.98" y2="40.64" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="PE1" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="7"/>
 <wire x1="152.4" y1="-45.72" x2="177.8" y2="-45.72" width="0.1524" layer="91"/>
 <label x="160.02" y="-45.72" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="B4"/>
+<wire x1="236.22" y1="38.1" x2="220.98" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PD3" class="0">
@@ -2273,12 +2282,20 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="203.2" y1="-43.18" x2="185.42" y2="-43.18" width="0.1524" layer="91"/>
 <label x="193.04" y="-43.18" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="B1"/>
+<wire x1="236.22" y1="45.72" x2="220.98" y2="45.72" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="PB4" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="8"/>
 <wire x1="203.2" y1="-45.72" x2="185.42" y2="-45.72" width="0.1524" layer="91"/>
 <label x="193.04" y="-45.72" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="B2"/>
+<wire x1="236.22" y1="43.18" x2="220.98" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PE5" class="0">
@@ -2372,17 +2389,24 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$1" gate="G$1" pin="VDD2"/>
 <wire x1="71.12" y1="93.98" x2="63.5" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="93.98" x2="63.5" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="63.5" x2="63.5" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="33.02" x2="63.5" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="93.98" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="78.74" x2="63.5" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="63.5" x2="63.5" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="48.26" x2="63.5" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="33.02" x2="63.5" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="17.78" x2="63.5" y2="2.54" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="2.54" x2="63.5" y2="-68.58" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="-68.58" x2="167.64" y2="-68.58" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="-68.58" x2="231.14" y2="-68.58" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="-68.58" x2="231.14" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="-68.58" x2="231.14" y2="5.08" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="EN2"/>
-<wire x1="231.14" y1="20.32" x2="231.14" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="50.8" x2="231.14" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="231.14" y1="81.28" x2="231.14" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="5.08" x2="231.14" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="20.32" x2="231.14" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="35.56" x2="231.14" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="50.8" x2="231.14" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="66.04" x2="231.14" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="81.28" x2="231.14" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="231.14" y1="96.52" x2="231.14" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="109.22" x2="63.5" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="109.22" x2="63.5" y2="93.98" width="0.1524" layer="91"/>
 <junction x="63.5" y="93.98"/>
@@ -2411,6 +2435,27 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="167.64" y1="-60.96" x2="167.64" y2="-68.58" width="0.1524" layer="91"/>
 <junction x="167.64" y="-68.58"/>
 <label x="167.64" y="-60.96" size="1.778" layer="95"/>
+<pinref part="U$8" gate="G$1" pin="EN2"/>
+<wire x1="220.98" y1="96.52" x2="231.14" y2="96.52" width="0.1524" layer="91"/>
+<junction x="231.14" y="96.52"/>
+<pinref part="U$7" gate="G$1" pin="EN2"/>
+<wire x1="220.98" y1="66.04" x2="231.14" y2="66.04" width="0.1524" layer="91"/>
+<junction x="231.14" y="66.04"/>
+<pinref part="U$6" gate="G$1" pin="EN2"/>
+<wire x1="220.98" y1="35.56" x2="231.14" y2="35.56" width="0.1524" layer="91"/>
+<junction x="231.14" y="35.56"/>
+<pinref part="U$5" gate="G$1" pin="EN2"/>
+<wire x1="220.98" y1="5.08" x2="231.14" y2="5.08" width="0.1524" layer="91"/>
+<junction x="231.14" y="5.08"/>
+<pinref part="U$4" gate="G$1" pin="EN2"/>
+<wire x1="71.12" y1="17.78" x2="63.5" y2="17.78" width="0.1524" layer="91"/>
+<junction x="63.5" y="17.78"/>
+<pinref part="U$3" gate="G$1" pin="EN2"/>
+<wire x1="71.12" y1="48.26" x2="63.5" y2="48.26" width="0.1524" layer="91"/>
+<junction x="63.5" y="48.26"/>
+<pinref part="U$2" gate="G$1" pin="EN2"/>
+<wire x1="71.12" y1="78.74" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
+<junction x="63.5" y="78.74"/>
 </segment>
 </net>
 </nets>

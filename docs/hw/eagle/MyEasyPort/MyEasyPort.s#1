@@ -2076,6 +2076,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$3" gate="G$1" pin="B3"/>
 <wire x1="58.42" y1="43.18" x2="71.12" y2="43.18" width="0.1524" layer="91"/>
+<label x="66.04" y="43.18" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PA3" class="0">
@@ -2087,6 +2088,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$3" gate="G$1" pin="B4"/>
 <wire x1="58.42" y1="45.72" x2="71.12" y2="45.72" width="0.1524" layer="91"/>
+<label x="66.04" y="45.72" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PA4" class="0">
@@ -2098,6 +2100,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$2" gate="G$1" pin="B3"/>
 <wire x1="58.42" y1="73.66" x2="71.12" y2="73.66" width="0.1524" layer="91"/>
+<label x="66.04" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB6" class="0">
@@ -2109,6 +2112,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$2" gate="G$1" pin="B4"/>
 <wire x1="58.42" y1="76.2" x2="71.12" y2="76.2" width="0.1524" layer="91"/>
+<label x="66.04" y="76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB7" class="0">
@@ -2120,6 +2124,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$1" gate="G$1" pin="B3"/>
 <wire x1="58.42" y1="104.14" x2="71.12" y2="104.14" width="0.1524" layer="91"/>
+<label x="66.04" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB2" class="0">
@@ -2131,6 +2136,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$1" gate="G$1" pin="B4"/>
 <wire x1="58.42" y1="106.68" x2="71.12" y2="106.68" width="0.1524" layer="91"/>
+<label x="66.04" y="106.68" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PF4" class="0">
@@ -2139,12 +2145,22 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="152.4" y1="-38.1" x2="132.08" y2="-38.1" width="0.1524" layer="91"/>
 <label x="139.7" y="-38.1" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="B4"/>
+<wire x1="58.42" y1="15.24" x2="71.12" y2="15.24" width="0.1524" layer="91"/>
+<label x="66.04" y="15.24" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PD7" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="4"/>
 <wire x1="152.4" y1="-40.64" x2="132.08" y2="-40.64" width="0.1524" layer="91"/>
 <label x="139.7" y="-40.64" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="B3"/>
+<wire x1="58.42" y1="12.7" x2="71.12" y2="12.7" width="0.1524" layer="91"/>
+<label x="66.04" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD6" class="0">
@@ -2153,12 +2169,22 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="152.4" y1="-43.18" x2="132.08" y2="-43.18" width="0.1524" layer="91"/>
 <label x="139.7" y="-43.18" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="B2"/>
+<wire x1="58.42" y1="10.16" x2="71.12" y2="10.16" width="0.1524" layer="91"/>
+<label x="66.04" y="10.16" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PC7" class="0">
 <segment>
 <pinref part="JP2" gate="A" pin="8"/>
 <wire x1="152.4" y1="-45.72" x2="132.08" y2="-45.72" width="0.1524" layer="91"/>
 <label x="139.7" y="-45.72" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="B1"/>
+<wire x1="58.42" y1="7.62" x2="71.12" y2="7.62" width="0.1524" layer="91"/>
+<label x="66.04" y="7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PC6" class="0">
@@ -2170,6 +2196,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$3" gate="G$1" pin="B1"/>
 <wire x1="58.42" y1="38.1" x2="71.12" y2="38.1" width="0.1524" layer="91"/>
+<label x="66.04" y="38.1" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PC5" class="0">
@@ -2181,6 +2208,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$3" gate="G$1" pin="B2"/>
 <wire x1="58.42" y1="40.64" x2="71.12" y2="40.64" width="0.1524" layer="91"/>
+<label x="66.04" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PC4" class="0">
@@ -2192,6 +2220,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$2" gate="G$1" pin="B1"/>
 <wire x1="58.42" y1="68.58" x2="71.12" y2="68.58" width="0.1524" layer="91"/>
+<label x="66.04" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB3" class="0">
@@ -2203,6 +2232,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$2" gate="G$1" pin="B2"/>
 <wire x1="58.42" y1="71.12" x2="71.12" y2="71.12" width="0.1524" layer="91"/>
+<label x="66.04" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PF3" class="0">
@@ -2214,6 +2244,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$1" gate="G$1" pin="B1"/>
 <wire x1="58.42" y1="99.06" x2="71.12" y2="99.06" width="0.1524" layer="91"/>
+<label x="66.04" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PF2" class="0">
@@ -2225,6 +2256,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <segment>
 <pinref part="U$1" gate="G$1" pin="B2"/>
 <wire x1="58.42" y1="101.6" x2="71.12" y2="101.6" width="0.1524" layer="91"/>
+<label x="66.04" y="101.6" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PF1" class="0">

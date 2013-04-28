@@ -2493,7 +2493,7 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <pinref part="JP3" gate="A" pin="17"/>
 </segment>
 </net>
-<net name="VBUS" class="0">
+<net name="3.3V+" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="VDD2"/>
 <wire x1="71.12" y1="93.98" x2="63.5" y2="93.98" width="0.1524" layer="91"/>
@@ -2504,8 +2504,8 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <wire x1="63.5" y1="33.02" x2="63.5" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="17.78" x2="63.5" y2="2.54" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="2.54" x2="63.5" y2="-68.58" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="-68.58" x2="167.64" y2="-68.58" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="-68.58" x2="231.14" y2="-68.58" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="-68.58" x2="195.58" y2="-68.58" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="-68.58" x2="231.14" y2="-68.58" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="-68.58" x2="231.14" y2="5.08" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="EN2"/>
 <wire x1="231.14" y1="5.08" x2="231.14" y2="20.32" width="0.1524" layer="91"/>
@@ -2538,11 +2538,6 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <junction x="231.14" y="81.28"/>
 <pinref part="U$8" gate="G$1" pin="VDD2"/>
 <wire x1="220.98" y1="111.76" x2="231.14" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="19"/>
-<wire x1="177.8" y1="-60.96" x2="167.64" y2="-60.96" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="-60.96" x2="167.64" y2="-68.58" width="0.1524" layer="91"/>
-<junction x="167.64" y="-68.58"/>
-<label x="167.64" y="-60.96" size="1.778" layer="95"/>
 <pinref part="U$8" gate="G$1" pin="EN2"/>
 <wire x1="220.98" y1="96.52" x2="231.14" y2="96.52" width="0.1524" layer="91"/>
 <junction x="231.14" y="96.52"/>
@@ -2564,6 +2559,11 @@ Source: https://portal.fciconnect.com/res/en/pdffiles/doc_search/57102.pdf</desc
 <pinref part="U$2" gate="G$1" pin="EN2"/>
 <wire x1="71.12" y1="78.74" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
 <junction x="63.5" y="78.74"/>
+<pinref part="JP3" gate="A" pin="20"/>
+<wire x1="185.42" y1="-60.96" x2="195.58" y2="-60.96" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="-60.96" x2="195.58" y2="-68.58" width="0.1524" layer="91"/>
+<junction x="195.58" y="-68.58"/>
+<label x="190.5" y="-60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
