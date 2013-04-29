@@ -168,7 +168,7 @@ namespace MyEasyVeep
         private void Form1_Load(object sender, EventArgs e)
         {
             MonitorWindow = new SerialMonitor();
-            MonitorWindow.Show();
+            //MonitorWindow.Show();
 
             UpdateDeviceList();
 
