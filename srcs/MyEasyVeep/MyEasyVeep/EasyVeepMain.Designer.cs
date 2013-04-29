@@ -696,6 +696,7 @@
             this.MainMenuStrip = this.menuMainEasyVeep;
             this.Name = "EasyVeepMain";
             this.Text = "MyEasyVeep";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EasyVeepMain_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.gdProcesses.ResumeLayout(false);

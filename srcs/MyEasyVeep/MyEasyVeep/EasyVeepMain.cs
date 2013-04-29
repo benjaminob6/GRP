@@ -25,6 +25,7 @@ namespace MyEasyVeep
         private string LastSensorValues;
         private string CurrentCommand;
         private Boolean EasyPortConnected = false;
+        private int TicksSinceLastSensor = 0;
         
         public EasyVeepMain()
         {
@@ -117,6 +118,12 @@ namespace MyEasyVeep
         {
             if (serialEasyPort.IsOpen)
             {
+                try
+                {
+                    serialEasyPort.Write("RST\r");
+                } catch{ }
+
+                System.Threading.Thread.Sleep(100);
                 serialEasyPort.Close();
                 LogSerialMessage(String.Format("{0} Port Closed",serialEasyPort.PortName),SerialLogEventType.Administration);
             }
@@ -355,10 +362,14 @@ namespace MyEasyVeep
                 }
             }
 
-            if (this.LastSensorValues != GetSensorValueWord())
+            TicksSinceLastSensor++;
+
+            if (this.LastSensorValues != GetSensorValueWord() || TicksSinceLastSensor > 15)
             {
                 this.SensorValuesChanged();
+                TicksSinceLastSensor = 0;
             }
+
 
             this.LastSensorValues = GetSensorValueWord();
         }
@@ -451,8 +462,12 @@ namespace MyEasyVeep
                     connectionTimeoutTimer.Enabled = false; //We have connected
                     EasyPortConnected = true;
                     LogSerialMessage(command, SerialLogEventType.Recieve);
+
                 } else if (command.Contains("EW="))
                 {
+                    connectionTimeoutTimer.Enabled = false; //We have connected
+                    EasyPortConnected = true;
+
                     try
                     {
                         int lastIndex = command.LastIndexOf("EW=");
@@ -473,6 +488,19 @@ namespace MyEasyVeep
                     CurrentCommand = command;
                 }
             }
+        }
+
+        private void EasyVeepMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                if (serialEasyPort.IsOpen)
+                {
+                    serialEasyPort.Close();
+                }
+            }
+            catch { }
+
         }
     }
 }
